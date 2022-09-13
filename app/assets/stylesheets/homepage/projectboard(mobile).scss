@@ -1,0 +1,66 @@
+@media screen and (max-width: 500px){
+	.projectboard--container{
+		height: 95%;
+		width: 100%;
+		position: absolute;
+		top: 5%;
+	}
+
+	.projectboard--container .projectboard--header{
+		height: 10%;
+		padding-left: 5px;
+		border-bottom: solid;
+	}
+
+	.button--delete_project{
+		position: absolute;
+		right: 10px;
+	}
+
+	.projectboard--container .project--descriptionbox{
+		height: 50%;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		background-color: inherit;
+		border-style: none;
+		padding-top: 5px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.projectboard--taskcontainer{
+		height:50%;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		border-style: solid;
+		padding-left: 5px;
+	}
+
+	.projectboard--taskcontainer .container--task_form{
+		height: 70px;
+	}
+
+	.projectboard--taskcontainer .form{
+		height: 70px;
+	}
+
+	.projectboard--taskcontainer .form .form--name{
+		height: 20px;
+		width: 85%;
+	}
+
+	.projectboard--taskcontainer .form .form--priority{
+		height: 20px;
+		width: 10%;
+		position: absolute;
+	}
+
+	.projectboard--taskcontainer .form .form--description{
+		height: 50px;
+		width: 100%;
+	}
+}

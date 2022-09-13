@@ -1,0 +1,25 @@
+@media screen and (min-width: 500px){
+	.sidebar-container{
+		height: 95%;
+		width: 25%;
+		position: absolute;
+		top: 5%;
+		border-right: solid;
+	}
+
+	.sidebar-container .projects-container{
+		height: 80%;
+		width: 100%;
+		text-align: center;
+	}
+
+	.sidebar-container .projects-container button{
+		height: 6%;
+		width: 100%;
+		font-size: 15px;
+	}
+
+	.sidebar-container .projects-container button:hover{
+		opacity: 0.8;
+	}
+}

@@ -1,0 +1,44 @@
+@media screen and (max-width: 500px){
+	.unscheduledTask{
+		height: 100px;
+		position: relative;
+		border-top: solid;
+	}
+
+	.unscheduledTask input{
+		border-style: none;
+		height: 25px;
+	}
+
+	.unscheduledTask .task--name{
+		position: absolute;
+		left: 0%;
+		top: 0%;
+		width: 80%;
+	}
+
+	.unscheduledTask .task--priority{
+		position: absolute;
+		left: 80%;
+		top: 0%;
+		width: 10%;
+		text-align: center;
+	}
+
+	.unscheduledTask textarea{
+		position: absolute;
+		top: 25px;
+		left: 0%;
+		width: 90%;
+		height: 75px;
+	}
+
+	.unscheduledTask .task--deleteButton{
+		position: absolute;
+		left: 90%;
+		top: 0%;
+		height: 100%;
+		width: 10%;
+		border-radius: 5px;
+	}
+}

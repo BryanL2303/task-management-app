@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  task_name: MyString
+  task_description: MyString
+  time: 2022-08-27 14:06:03
+  scheduled: false
+  calender: one
+  project: one
+
+two:
+  task_id: 1
+  task_name: MyString
+  task_description: MyString
+  time: 2022-08-27 14:06:03
+  scheduled: false
+  calender: two
+  project: two

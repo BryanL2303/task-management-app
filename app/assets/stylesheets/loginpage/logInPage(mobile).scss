@@ -1,0 +1,47 @@
+@media screen and (max-width: 500px){
+	.log-in-page{
+		height: 100vh;
+		width: 100vw;
+		text-align: center;
+	}
+
+	.log-in-form{
+		height: 80%;
+		width: 80%;
+		position: absolute;
+		top: 10%;
+		left: 10%;
+	}
+
+	.log-in-form__name{
+		position: absolute;
+		top: 10%;
+		left: 5%;
+		height: 10%;
+		width: 90%;
+	}
+
+	.log-in-form__password{
+		position: absolute;
+		top: 20%;
+		left: 5%;
+		height: 10%;
+		width: 90%;	
+	}
+
+	.log-in-form button{
+		position: absolute;
+		top: 40%;
+		left: 5%;
+		height: 10%;
+		width: 90%;	
+	}
+
+	.log-in-page a{
+		position: absolute;
+		top: 55%;
+		left: 10%;
+		height: 10%;
+		width: 80%;
+	}
+}

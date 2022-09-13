@@ -1,0 +1,41 @@
+@media screen and (max-width: 500px){
+	.dashboard-container{
+		height: 95%;
+		width: 100%;
+		position: absolute;
+		top: 5%;
+	}
+
+	.dashboard-container .dailytimetable-container{
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.form .form--time{
+		height: 20px;
+		width: 25%;
+	}
+
+	.form .form--name{
+		height: 20px;
+		width: 70%;
+	}
+
+	.form .form--project{
+		height: 20px;
+		width: 100%;
+	}
+
+	.form .form--description{
+		height: 50px;
+		width: 100%;
+	}
+
+	.dashboard-container .othertasks-container{
+		position: relative;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+}
