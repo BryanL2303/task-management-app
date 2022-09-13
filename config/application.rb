@@ -13,6 +13,7 @@ module TaskManagementApp
     config.active_record.belongs_to_required_by_default = false
     config.assets.initialize_on_precompile = false
     config.serve_static_assets = true
+    config.assets.precompile += %w(base., skeleton. .....)
 
     # Configuration for the application, engines, and railties goes here.
     #
