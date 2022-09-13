@@ -84,5 +84,3 @@ gem "dartsass", "~> 1.49"
 gem "sassc", "~> 2.4"
 
 gem "node", "~> 2.1"
-
-gem "yarn", "~> 0.1.1"
