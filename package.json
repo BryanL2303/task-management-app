@@ -46,6 +46,7 @@
     "babel-plugin-polyfill-corejs2": "^0.3.3",
     "babel-plugin-polyfill-corejs3": "^0.5.3",
     "babel-plugin-polyfill-regenerator": "^0.4.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "balanced-match": "^1.0.2",
     "base": "^0.11.2",
     "base64-js": "^1.5.1",
