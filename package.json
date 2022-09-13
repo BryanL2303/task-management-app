@@ -38,6 +38,7 @@
     "async-limiter": "^1.0.1",
     "atob": "^2.1.2",
     "autoprefixer": "^9.8.8",
+    "babel": "^6.23.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^2.8.0",
