@@ -10,7 +10,6 @@ Rails.application.configure do
 
   config.assets.prefix = "/dev-assets"
 
-
   # Do not eager load code on boot.
   config.eager_load = false
 
