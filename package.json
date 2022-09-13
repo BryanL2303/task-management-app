@@ -538,6 +538,7 @@
     "raw-body": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
     "read-cache": "^1.0.0",
     "readable-stream": "^2.3.7",
     "readdirp": "^2.2.1",
