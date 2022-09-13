@@ -13,5 +13,4 @@
  *= require_tree .
  *= require_self
  */
-@import "./variables/variables";
 @import "./homepage/home";
