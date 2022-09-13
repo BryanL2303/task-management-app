@@ -82,3 +82,5 @@ gem "jquery", "~> 0.0.1"
 gem "dartsass", "~> 1.49"
 
 gem "sassc", "~> 2.4"
+
+gem "node", "~> 2.1"
