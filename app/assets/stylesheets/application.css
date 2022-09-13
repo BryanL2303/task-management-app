@@ -13,4 +13,4 @@
  *= require_tree .
  *= require_self
  */
-@import "./homepage/home";
+@import "./homepage/homePage.scss";

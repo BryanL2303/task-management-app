@@ -1,175 +1,121 @@
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
   .create-account-page {
     height: 100vh;
     width: 100vw;
-    text-align: center;
-  }
-  /* line 8, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
+    text-align: center; }
   .create-account-form {
     height: 80%;
     width: 80%;
     position: absolute;
     top: 10%;
-    left: 10%;
-  }
-  /* line 16, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
+    left: 10%; }
   .create-account-form__name {
     position: absolute;
     top: 10%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 24, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
+    width: 90%; }
   .create-account-form__password {
     position: absolute;
     top: 20%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 32, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
+    width: 90%; }
   .create-account-form button {
     position: absolute;
     top: 40%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 40, app/assets/stylesheets/accountcreationpage/accountCreationPage(mobile).scss */
+    width: 90%; }
   .create-account-page a {
     position: absolute;
     top: 55%;
     left: 10%;
     height: 10%;
-    width: 80%;
-  }
-}
+    width: 80%; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
   .create-account-page {
     height: 100vh;
     width: 100vw;
-    text-align: center;
-  }
-  /* line 8, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
+    text-align: center; }
   .create-account-form {
     height: 50%;
     width: 50%;
     position: absolute;
     top: 25%;
-    left: 25%;
-  }
-  /* line 16, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
+    left: 25%; }
   .create-account-form__name {
     position: absolute;
     top: 30%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 23, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
+    width: 50%; }
   .create-account-form__password {
     position: absolute;
     top: 40%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 30, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
+    width: 50%; }
   .create-account-form button {
     position: absolute;
     top: 50%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 37, app/assets/stylesheets/accountcreationpage/accountCreationPage.scss */
+    width: 50%; }
   .create-account-page a {
     position: absolute;
     top: 55%;
     left: 39%;
-    width: 22%;
-  }
-}
+    width: 22%; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/dashboard(mobile).scss */
   .dashboard-container {
     height: 95%;
     width: 100%;
     position: absolute;
-    top: 5%;
-  }
-  /* line 9, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    top: 5%; }
   .dashboard-container .dailytimetable-container {
     width: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  /* line 15, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    overflow-y: scroll; }
   .form .form--time {
     height: 20px;
-    width: 25%;
-  }
-  /* line 20, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    width: 25%; }
   .form .form--name {
     height: 20px;
-    width: 70%;
-  }
-  /* line 25, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    width: 70%; }
   .form .form--project {
     height: 20px;
-    width: 100%;
-  }
-  /* line 30, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    width: 100%; }
   .form .form--description {
     height: 50px;
-    width: 100%;
-  }
-  /* line 35, app/assets/stylesheets/homepage/dashboard(mobile).scss */
+    width: 100%; }
   .dashboard-container .othertasks-container {
     position: relative;
     width: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
-  }
-}
+    overflow-y: scroll; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/dashboard.scss */
   .dashboard-container {
     height: 95%;
     width: 75%;
     position: absolute;
     top: 5%;
     left: 25%;
-    padding-left: 5px;
-  }
-  /* line 11, app/assets/stylesheets/homepage/dashboard.scss */
+    padding-left: 5px; }
   .dashboard-container .dailytimetable-container {
     height: 100%;
     width: 50%;
     overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  /* line 18, app/assets/stylesheets/homepage/dashboard.scss */
+    overflow-y: scroll; }
   .form .form--time {
     height: 20px;
-    width: 25%;
-  }
-  /* line 23, app/assets/stylesheets/homepage/dashboard.scss */
+    width: 25%; }
   .form .form--name {
     height: 20px;
-    width: 70%;
-  }
-  /* line 28, app/assets/stylesheets/homepage/dashboard.scss */
+    width: 70%; }
   .form .form--project {
     height: 20px;
-    width: 100%;
-  }
-  /* line 33, app/assets/stylesheets/homepage/dashboard.scss */
+    width: 100%; }
   .form .form--description {
     height: 50px;
-    width: 100%;
-  }
-  /* line 38, app/assets/stylesheets/homepage/dashboard.scss */
+    width: 100%; }
   .dashboard-container .othertasks-container {
     height: 100%;
     width: 50%;
@@ -178,158 +124,109 @@
     position: absolute;
     top: 0;
     left: 50%;
-    padding-left: 5px;
-  }
-}
+    padding-left: 5px; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/homePage(mobile).scss */
   * {
     margin: 0px;
     padding: 0px;
-    user-select: none;
-  }
-  /* line 8, app/assets/stylesheets/homepage/homePage(mobile).scss */
+    user-select: none; }
   body {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  /* line 15, app/assets/stylesheets/homepage/homePage(mobile).scss */
+    overflow-y: scroll; }
   .homepage-container {
     height: 100vh;
-    width: 100vw;
-  }
-}
+    width: 100vw; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/homePage.scss */
   * {
     margin: 0px;
     padding: 0px;
-    user-select: none;
-  }
-  /* line 8, app/assets/stylesheets/homepage/homePage.scss */
+    user-select: none; }
   body {
     height: 800px;
     width: 100%;
-    overflow: hidden;
-  }
-  /* line 14, app/assets/stylesheets/homepage/homePage.scss */
+    overflow: hidden; }
   .homepage-container {
     height: 800px;
-    width: inherit;
-  }
-}
+    width: inherit; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/projectTask(mobile).scss */
   .projectTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/projectTask(mobile).scss */
+    border-top: solid; }
   .projectTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/projectTask(mobile).scss */
+    height: 25px; }
   .projectTask .task--name {
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 80%;
-  }
-  /* line 20, app/assets/stylesheets/homepage/projectTask(mobile).scss */
+    width: 80%; }
   .projectTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 28, app/assets/stylesheets/homepage/projectTask(mobile).scss */
+    text-align: center; }
   .projectTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
-    height: 75px;
-  }
-  /* line 36, app/assets/stylesheets/homepage/projectTask(mobile).scss */
+    height: 75px; }
   .projectTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/projectTask.scss */
   .projectTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/projectTask.scss */
+    border-top: solid; }
   .projectTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/projectTask.scss */
+    height: 25px; }
   .projectTask .task--name {
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 80%;
-  }
-  /* line 20, app/assets/stylesheets/homepage/projectTask.scss */
+    width: 80%; }
   .projectTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 28, app/assets/stylesheets/homepage/projectTask.scss */
+    text-align: center; }
   .projectTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
-    height: 75px;
-  }
-  /* line 36, app/assets/stylesheets/homepage/projectTask.scss */
+    height: 75px; }
   .projectTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/projectboard(mobile).scss */
   .projectboard--container {
     height: 95%;
     width: 100%;
     position: absolute;
-    top: 5%;
-  }
-  /* line 9, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    top: 5%; }
   .projectboard--container .projectboard--header {
     height: 10%;
     padding-left: 5px;
-    border-bottom: solid;
-  }
-  /* line 15, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    border-bottom: solid; }
   .button--delete_project {
     position: absolute;
-    right: 10px;
-  }
-  /* line 20, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    right: 10px; }
   .projectboard--container .project--descriptionbox {
     height: 50%;
     width: 100%;
@@ -339,9 +236,7 @@
     border-style: none;
     padding-top: 5px;
     padding-left: 5px;
-    padding-right: 5px;
-  }
-  /* line 32, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    padding-right: 5px; }
   .projectboard--taskcontainer {
     height: 50%;
     width: 100%;
@@ -350,54 +245,35 @@
     overflow-x: hidden;
     overflow-y: scroll;
     border-style: solid;
-    padding-left: 5px;
-  }
-  /* line 43, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    padding-left: 5px; }
   .projectboard--taskcontainer .container--task_form {
-    height: 70px;
-  }
-  /* line 47, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    height: 70px; }
   .projectboard--taskcontainer .form {
-    height: 70px;
-  }
-  /* line 51, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    height: 70px; }
   .projectboard--taskcontainer .form .form--name {
     height: 20px;
-    width: 85%;
-  }
-  /* line 56, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    width: 85%; }
   .projectboard--taskcontainer .form .form--priority {
     height: 20px;
     width: 10%;
-    position: absolute;
-  }
-  /* line 62, app/assets/stylesheets/homepage/projectboard(mobile).scss */
+    position: absolute; }
   .projectboard--taskcontainer .form .form--description {
     height: 50px;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/projectboard.scss */
   .projectboard--container {
     height: 95%;
     width: 75%;
     position: absolute;
     top: 5%;
-    left: 25%;
-  }
-  /* line 10, app/assets/stylesheets/homepage/projectboard.scss */
+    left: 25%; }
   .projectboard--container .projectboard--header {
     height: 10%;
     padding-left: 5px;
-    border-bottom: solid;
-  }
-  /* line 16, app/assets/stylesheets/homepage/projectboard.scss */
+    border-bottom: solid; }
   .button--delete_project {
     position: absolute;
-    right: 10px;
-  }
-  /* line 21, app/assets/stylesheets/homepage/projectboard.scss */
+    right: 10px; }
   .projectboard--container .project--descriptionbox {
     height: 90%;
     width: 50%;
@@ -407,9 +283,7 @@
     border-style: none;
     padding-top: 5px;
     padding-left: 5px;
-    padding-right: 5px;
-  }
-  /* line 33, app/assets/stylesheets/homepage/projectboard.scss */
+    padding-right: 5px; }
   .projectboard--taskcontainer {
     height: 90%;
     width: 50%;
@@ -419,208 +293,143 @@
     top: 10%;
     left: 50%;
     border-style: solid;
-    padding-left: 5px;
-  }
-  /* line 45, app/assets/stylesheets/homepage/projectboard.scss */
+    padding-left: 5px; }
   .projectboard--taskcontainer .container--task_form {
-    height: 70px;
-  }
-  /* line 49, app/assets/stylesheets/homepage/projectboard.scss */
+    height: 70px; }
   .projectboard--taskcontainer .form {
-    height: 70px;
-  }
-  /* line 53, app/assets/stylesheets/homepage/projectboard.scss */
+    height: 70px; }
   .projectboard--taskcontainer .form .form--name {
     height: 20px;
-    width: 85%;
-  }
-  /* line 58, app/assets/stylesheets/homepage/projectboard.scss */
+    width: 85%; }
   .projectboard--taskcontainer .form .form--priority {
     height: 20px;
     width: 10%;
-    position: absolute;
-  }
-  /* line 64, app/assets/stylesheets/homepage/projectboard.scss */
+    position: absolute; }
   .projectboard--taskcontainer .form .form--description {
     height: 50px;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
   .scheduledTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    border-top: solid; }
   .scheduledTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    height: 25px; }
   .scheduledTask .task--time {
     position: absolute;
     left: 0%;
     top: 0%;
     width: 15%;
-    background-color: inherit;
-  }
-  /* line 21, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    background-color: inherit; }
   .scheduledTask .task--name {
     position: absolute;
     left: 15%;
     top: 0%;
-    width: 65%;
-  }
-  /* line 28, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    width: 65%; }
   .scheduledTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 36, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    text-align: center; }
   .scheduledTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
     height: 75px;
-    background-color: inherit;
-  }
-  /* line 45, app/assets/stylesheets/homepage/scheduledTask(mobile).scss */
+    background-color: inherit; }
   .scheduledTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/scheduledTask.scss */
   .scheduledTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/scheduledTask.scss */
+    border-top: solid; }
   .scheduledTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/scheduledTask.scss */
+    height: 25px; }
   .scheduledTask .task--time {
     position: absolute;
     left: 0%;
     top: 0%;
     width: 15%;
-    background-color: inherit;
-  }
-  /* line 21, app/assets/stylesheets/homepage/scheduledTask.scss */
+    background-color: inherit; }
   .scheduledTask .task--name {
     position: absolute;
     left: 15%;
     top: 0%;
-    width: 65%;
-  }
-  /* line 28, app/assets/stylesheets/homepage/scheduledTask.scss */
+    width: 65%; }
   .scheduledTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 36, app/assets/stylesheets/homepage/scheduledTask.scss */
+    text-align: center; }
   .scheduledTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
     height: 75px;
-    background-color: inherit;
-  }
-  /* line 45, app/assets/stylesheets/homepage/scheduledTask.scss */
+    background-color: inherit; }
   .scheduledTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/sidebar(mobile).scss */
   .sidebar-container {
     height: 95%;
     width: 100%;
     position: absolute;
     top: 5%;
-    visibility: hidden;
-  }
-  /* line 10, app/assets/stylesheets/homepage/sidebar(mobile).scss */
+    visibility: hidden; }
   .sidebar-container .projects-container {
     height: 100%;
     width: 100%;
-    text-align: center;
-  }
-  /* line 16, app/assets/stylesheets/homepage/sidebar(mobile).scss */
+    text-align: center; }
   .sidebar-container .projects-container button {
     height: 10%;
     width: 100%;
-    font-size: 15px;
-  }
-  /* line 22, app/assets/stylesheets/homepage/sidebar(mobile).scss */
+    font-size: 15px; }
   .sidebar-container .projects-container button:hover {
-    opacity: 0.8;
-  }
-}
+    opacity: 0.8; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/sidebar.scss */
   .sidebar-container {
     height: 95%;
     width: 25%;
     position: absolute;
     top: 5%;
-    border-right: solid;
-  }
-  /* line 10, app/assets/stylesheets/homepage/sidebar.scss */
+    border-right: solid; }
   .sidebar-container .projects-container {
     height: 80%;
     width: 100%;
-    text-align: center;
-  }
-  /* line 16, app/assets/stylesheets/homepage/sidebar.scss */
+    text-align: center; }
   .sidebar-container .projects-container button {
     height: 6%;
     width: 100%;
-    font-size: 15px;
-  }
-  /* line 22, app/assets/stylesheets/homepage/sidebar.scss */
+    font-size: 15px; }
   .sidebar-container .projects-container button:hover {
-    opacity: 0.8;
-  }
-}
+    opacity: 0.8; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/topbar(mobile).scss */
   .topbar-container {
     height: 5%;
     width: 100%;
     border-bottom: solid;
-    overflow: hidden;
-  }
-  /* line 9, app/assets/stylesheets/homepage/topbar(mobile).scss */
+    overflow: hidden; }
   .topbar-container button {
     height: 100%;
     width: 20%;
-    text-align: center;
-  }
-  /* line 15, app/assets/stylesheets/homepage/topbar(mobile).scss */
+    text-align: center; }
   .topbar-container .userMenu {
     height: inherit;
     width: 40%;
@@ -628,30 +437,21 @@
     position: absolute;
     top: 0%;
     right: 0%;
-    display: flex;
-  }
-  /* line 25, app/assets/stylesheets/homepage/topbar(mobile).scss */
+    display: flex; }
   .topbar-container .userMenu button {
     height: 100%;
     width: 40%;
-    margin-left: 3%;
-  }
-}
+    margin-left: 3%; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/topbar.scss */
   .topbar-container {
     height: 4.8%;
     width: 100%;
     border-bottom: solid;
-    overflow: hidden;
-  }
-  /* line 9, app/assets/stylesheets/homepage/topbar.scss */
+    overflow: hidden; }
   .topbar-container button {
     height: 100%;
     width: 15%;
-    text-align: center;
-  }
-  /* line 15, app/assets/stylesheets/homepage/topbar.scss */
+    text-align: center; }
   .topbar-container .userMenu {
     height: 4.8%;
     width: 15%;
@@ -659,229 +459,162 @@
     position: absolute;
     top: 0%;
     right: 0%;
-    display: flex;
-  }
-  /* line 25, app/assets/stylesheets/homepage/topbar.scss */
+    display: flex; }
   .tutorial--button {
     border-radius: 50%;
     margin-right: 5px;
-    font-size: 20px;
-  }
-  /* line 31, app/assets/stylesheets/homepage/topbar.scss */
+    font-size: 20px; }
   .topbar-container .userMenu .log-out--button {
     width: 35%;
-    margin-left: 3%;
-  }
-}
+    margin-left: 3%; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
   .unscheduledTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
+    border-top: solid; }
   .unscheduledTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
+    height: 25px; }
   .unscheduledTask .task--name {
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 80%;
-  }
-  /* line 20, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
+    width: 80%; }
   .unscheduledTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 28, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
+    text-align: center; }
   .unscheduledTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
-    height: 75px;
-  }
-  /* line 36, app/assets/stylesheets/homepage/unscheduledTask(mobile).scss */
+    height: 75px; }
   .unscheduledTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/homepage/unscheduledTask.scss */
   .unscheduledTask {
     height: 100px;
     position: relative;
-    border-top: solid;
-  }
-  /* line 8, app/assets/stylesheets/homepage/unscheduledTask.scss */
+    border-top: solid; }
   .unscheduledTask input {
     border-style: none;
-    height: 25px;
-  }
-  /* line 13, app/assets/stylesheets/homepage/unscheduledTask.scss */
+    height: 25px; }
   .unscheduledTask .task--name {
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 80%;
-  }
-  /* line 20, app/assets/stylesheets/homepage/unscheduledTask.scss */
+    width: 80%; }
   .unscheduledTask .task--priority {
     position: absolute;
     left: 80%;
     top: 0%;
     width: 10%;
-    text-align: center;
-  }
-  /* line 28, app/assets/stylesheets/homepage/unscheduledTask.scss */
+    text-align: center; }
   .unscheduledTask textarea {
     position: absolute;
     top: 25px;
     left: 0%;
     width: 90%;
-    height: 75px;
-  }
-  /* line 36, app/assets/stylesheets/homepage/unscheduledTask.scss */
+    height: 75px; }
   .unscheduledTask .task--deleteButton {
     position: absolute;
     left: 90%;
     top: 0%;
     height: 100%;
     width: 10%;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; } }
 @media screen and (max-width: 500px) {
-  /* line 2, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
   .log-in-page {
     height: 100vh;
     width: 100vw;
-    text-align: center;
-  }
-  /* line 8, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
+    text-align: center; }
   .log-in-form {
     height: 80%;
     width: 80%;
     position: absolute;
     top: 10%;
-    left: 10%;
-  }
-  /* line 16, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
+    left: 10%; }
   .log-in-form__name {
     position: absolute;
     top: 10%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 24, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
+    width: 90%; }
   .log-in-form__password {
     position: absolute;
     top: 20%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 32, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
+    width: 90%; }
   .log-in-form button {
     position: absolute;
     top: 40%;
     left: 5%;
     height: 10%;
-    width: 90%;
-  }
-  /* line 40, app/assets/stylesheets/loginpage/logInPage(mobile).scss */
+    width: 90%; }
   .log-in-page a {
     position: absolute;
     top: 55%;
     left: 10%;
     height: 10%;
-    width: 80%;
-  }
-}
+    width: 80%; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/loginpage/logInPage.scss */
   .log-in-page {
     height: 100vh;
     width: 100vw;
-    text-align: center;
-  }
-  /* line 8, app/assets/stylesheets/loginpage/logInPage.scss */
+    text-align: center; }
   .log-in-form {
     height: 50%;
     width: 50%;
     position: absolute;
     top: 25%;
-    left: 25%;
-  }
-  /* line 16, app/assets/stylesheets/loginpage/logInPage.scss */
+    left: 25%; }
   .log-in-form__name {
     position: absolute;
     top: 30%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 23, app/assets/stylesheets/loginpage/logInPage.scss */
+    width: 50%; }
   .log-in-form__password {
     position: absolute;
     top: 40%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 30, app/assets/stylesheets/loginpage/logInPage.scss */
+    width: 50%; }
   .log-in-form button {
     position: absolute;
     top: 50%;
     left: 25%;
-    width: 50%;
-  }
-  /* line 37, app/assets/stylesheets/loginpage/logInPage.scss */
+    width: 50%; }
   .log-in-page a {
     position: absolute;
     top: 55%;
     left: 39%;
-    width: 22%;
-  }
-}
+    width: 22%; } }
 @media screen and (min-width: 500px) {
-  /* line 2, app/assets/stylesheets/tutorialpage/tutorialPage.scss */
   .tutorial-page {
     height: 100vh;
-    width: 100vw;
-  }
-  /* line 7, app/assets/stylesheets/tutorialpage/tutorialPage.scss */
+    width: 100vw; }
   .tutorial-page img {
     height: 95%;
     position: absolute;
     top: 5%;
-    overflow: scroll;
-  }
-  /* line 14, app/assets/stylesheets/tutorialpage/tutorialPage.scss */
+    overflow: scroll; }
   .tutorial-page .topbar-container {
     height: 5%;
     width: 100%;
     border-bottom: solid;
-    overflow: hidden;
-  }
-  /* line 21, app/assets/stylesheets/tutorialpage/tutorialPage.scss */
+    overflow: hidden; }
   .tutorial-page .topbar-container button {
     height: 100%;
     width: 33%;
-    text-align: center;
-  }
-}
+    text-align: center; } }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -897,4 +630,4 @@
 
 
  */
-@import "./homepage/home";
+@import "./homepage/homePage.scss";
