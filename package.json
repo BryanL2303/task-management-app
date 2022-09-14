@@ -23,6 +23,7 @@
     "webpack": "^5.74.0"
   },
   "dependencies": {
+    "@rails/webpacker": "^5.4.3",
     "webpack-cli": "^4.10.0"
   }
 }
