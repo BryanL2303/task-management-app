@@ -22,8 +22,7 @@
   "homepage": "https://github.com/BryanL2303/task-management-app#readme",
   "dependencies": {
     "@rails/webpacker": "^5.4.3",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack": "^5.74.0"
   },
   "devDependencies": {}
 }
