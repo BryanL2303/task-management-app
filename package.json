@@ -22,6 +22,7 @@
   "homepage": "https://github.com/BryanL2303/task-management-app#readme",
   "dependencies": {
     "@babel/core": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@rails/webpacker": "^5.4.3",
     "babel-loader": "^8.2.5",
     "file-loader": "^6.2.0",
