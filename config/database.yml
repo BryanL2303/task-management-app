@@ -85,10 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: d4kh2sjvnplclo
-  username: touknkvvuknnmz
-  port: 5432
-  password: ad693e72f3a94284b6a8a04667417cb2b56fbb9487d6c322314f927cb518d9da
   #password: <%= ENV["TASK_MANAGEMENT_APP_DATABASE_PASSWORD"] %>
-  host: ec2-34-231-42-166.compute-1.amazonaws.com
-  url: postgres://touknkvvuknnmz:ad693e72f3a94284b6a8a04667417cb2b56fbb9487d6c322314f927cb518d9da@ec2-34-231-42-166.compute-1.amazonaws.com:5432/d4kh2sjvnplclo
