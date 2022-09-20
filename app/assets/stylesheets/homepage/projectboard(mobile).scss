@@ -1,23 +1,23 @@
 @media screen and (max-width: 500px){
-	.projectboard--container{
+	.project__container{
 		height: 95%;
 		width: 100%;
 		position: absolute;
 		top: 5%;
 	}
 
-	.projectboard--container .projectboard--header{
+	.project__container .project__header{
 		height: 10%;
 		padding-left: 5px;
 		border-bottom: solid;
 	}
 
-	.button--delete_project{
+	.project__delete--button{
 		position: absolute;
 		right: 10px;
 	}
 
-	.projectboard--container .project--descriptionbox{
+	.project__container .project__description{
 		height: 50%;
 		width: 100%;
 		overflow-x: hidden;
@@ -29,7 +29,7 @@
 		padding-right: 5px;
 	}
 
-	.projectboard--taskcontainer{
+	.project__task-container{
 		height:50%;
 		width: 100%;
 		position: absolute;
@@ -40,26 +40,22 @@
 		padding-left: 5px;
 	}
 
-	.projectboard--taskcontainer .container--task_form{
+	.project__task-container .form{
 		height: 70px;
 	}
 
-	.projectboard--taskcontainer .form{
-		height: 70px;
-	}
-
-	.projectboard--taskcontainer .form .form--name{
+	.project__task-container .form .form__name{
 		height: 20px;
 		width: 85%;
 	}
 
-	.projectboard--taskcontainer .form .form--priority{
+	.project__task-container .form .form__priority{
 		height: 20px;
 		width: 10%;
 		position: absolute;
 	}
 
-	.projectboard--taskcontainer .form .form--description{
+	.project__task-container .form .form__description{
 		height: 50px;
 		width: 100%;
 	}

@@ -20,7 +20,7 @@ const TaskList = ({ project_id, project_name }) => {
 	}, [project_id])
 
 	function fetchProjectTasks() {
-		axios.get('/api/account/' + accountState.id + '/getTasksByProject/' + project_id)
+		axios.get('/api/account/' + accountState.id + '/get_tasks_by_project/' + project_id)
 	  .then(resp => {
 	    setProjectTasks(resp.data.data)
 	    sessionStorage.setItem(`projectTasks${project_id}`, JSON.stringify(resp.data.data))
@@ -29,7 +29,7 @@ const TaskList = ({ project_id, project_name }) => {
 	}
 
 	return(
-		<div className="projectboard--taskcontainer" style={projectTaskListStyle}>
+		<div className="project__task-container" style={projectTaskListStyle}>
 			{projectTasks.map((task)=> {
 		    return(
 		      <ProjectTask key={ task.id } task_id={ task.id } reRenderList={ fetchProjectTasks } view="project"/>

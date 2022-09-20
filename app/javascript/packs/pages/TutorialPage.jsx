@@ -7,10 +7,6 @@ import TutorialProjectboard from './tutorialpage/tutorialProjectboard.jpg'
 const TutorialPage = () => {
   const [stage, setStage] = useState(1)
 
-  useEffect(() => {
-    //Do stuff
-  }, [])
-
   return(
     <div className="tutorial-page">
       <TopBar stage={stage} setStage={setStage}/>

@@ -1,39 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import setState from '../functions/setState'
 
 const LogInPage = () => {
-  const [name, setName] = useState()
-  const [password, setPassword] = useState()
-
-  function changeName(e) {
-    setName(e.target.value)
+  //If there is an ongoing session go to home page
+  if (sessionStorage.getItem('id') != null) {
+    window.location.href = '/home'
   }
 
-  function changePassword(e) {
-    setPassword(e.target.value)
-  }
-
+  //Handle submit form event
   function submitForm(e) {
     e.preventDefault()
-    axios.post('/api/account/0/checkNameExistence', {
-      name: name,
-    })
-    .then(resp => {
-      console.log(resp)
-      if (resp.data == true) {
-        authenticateAccount()
-      }
-      else {
-        alert("Username does not exist, please double check input.")
-      }
-    })
-    .catch(resp => console.log(resp))    
-  }
-
-  function authenticateAccount(){
-    axios.post('/api/account/0/authenticateAccount', {
-      name: name,
-      password: password,
+    axios.post('/api/account/0/authenticate_account', {
+      name: e.target[0].value,
+      password: e.target[1].value,
     })
     .then(resp => {
       if (resp.data != false) {
@@ -42,17 +22,17 @@ const LogInPage = () => {
         window.location.href = '/home'
       }
       else {
-        alert("Password is wrong, please try again.")
+        alert("Username or password is wrong, please double check input.")
       }
     })
-    .catch(resp => console.log(resp))
+    .catch(resp => console.log(resp))    
   }
 
   return(
     <div className='log-in-page'>
       <form className='log-in-form' onSubmit={ submitForm }>
-        <input className='log-in-form__name' placeholder='username' onChange={ changeName }></input>
-        <input className='log-in-form__password' placeholder='password' onChange={ changePassword }></input>
+        <input className='log-in-form__name' placeholder='username'></input>
+        <input className='log-in-form__password' type='password' placeholder='password'></input>
         <button>Log In</button>
       </form>
       <a href='/create_account'>Don't have an account? Click here to create account</a>

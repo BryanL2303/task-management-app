@@ -19,7 +19,7 @@ module Api
 			render json: ProjectSerializer.new(project, options).serialized_json
 		end
 
-		def create_project
+		def createProject
 			project = Project.new(project_name: params[:project_name],
 				project_description: params[:project_description],
 				account_id: params[:account_id],
@@ -32,38 +32,30 @@ module Api
 			end
 		end
 
-		def set_description
-			project = Project.find_by(id: params[:id])
+		def updateProject
+			project = Project.find(params[:id])
 
-			project.project_description = params[:project_description]
+			if params[:tag] != nil
+				tasks = Task.where(project_id: project.id)
+				for task in tasks
+					task.tag = params[:tag]
+					task.save
+				end
+			end
 
-			if project.save
-				render json: ProjectSerializer.new(project).serialized_json
+			if project.update(project_param)
+			    render json: ProjectSerializer.new(project).serialized_json
 			else
 				render json: {error: project.errors.messages}, status: 422
-			end
-		end
-
-		def setTag
-			project = Project.find_by(id: params[:id])
-			tasks = Task.where(project_id: project.id)
-
-			project.tag = params[:tag]
-			for task in tasks
-				task.tag = params[:tag]
-				task.save
-			end
-
-			if project.save
-				render json: ProjectSerializer.new(project).serialized_json
-			else
-				render json: {error: project.errors.messages}, status: 422
-			end
+			end		   
 		end
 
 		private
 		def options
 			@options ||= { include: %i{tasks}}
+		end
+		def project_param
+			params.require(:project).permit(:id, :project_description, :tag)
 		end
 	end
 end

@@ -27,16 +27,13 @@ const Dashboard = () => {
         fetchCalender() 
       }
     }
-  }, [])
-
-  useEffect(() => {
-    if (accountState != null && sessionStorage.getItem('unscheduledTasks') == null) {
+    if (sessionStorage.getItem('unscheduledTasks') == null) {
       fetchUnscheduledTasks()
     }
     else{
       setUnscheduledTasks(JSON.parse(sessionStorage.getItem("unscheduledTasks")))
     }
-  }, [accountState])
+  }, [])
 
   function fetchCalender() {
     let date = new Date();
@@ -66,7 +63,7 @@ const Dashboard = () => {
   }
 
   function fetchUnscheduledTasks() {
-    axios.get('/api/account/' + accountState.id + '/getUnscheduledTasks')
+    axios.get('/api/account/' + accountState.id + '/get_unscheduled_tasks')
     .then(resp => {
       if (resp.data.data != null) {
         setUnscheduledTasks(resp.data.data)

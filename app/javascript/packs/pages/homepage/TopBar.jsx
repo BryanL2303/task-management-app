@@ -15,6 +15,7 @@ const TopBar = () => {
   const [projectDescriptionStyle, setProjectDescriptionStyle] = useContext(ProjectDescriptionStyleContext)
   const [projectTaskListStyle, setProjectTaskListStyle] = useContext(ProjectTaskListStyleContext)
   const [sideBarStyle, setSideBarStyle] = useContext(SideBarStyleContext)
+  
   const [sideBarHidden, setSideBarHidden] = useState(false)
   const [projectTaskListHidden, setProjectTaskListHidden] = useState(false)
   const [accountName, setAccountName] = useState("loading")
@@ -108,7 +109,7 @@ const TopBar = () => {
 
   const UserMenu = () => {
     return(
-      <div className='userMenu'>
+      <div className='user-menu'>
         {screen.width > 500 &&
           <button className="tutorial--button" onClick={showTutorial}> ? </button>}
         <h1>{accountName}</h1>

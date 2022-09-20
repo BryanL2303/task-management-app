@@ -7,8 +7,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   const [name, setName] = useState()
   const [displayTime, setDisplayTime] = useState("loading")
   const [time, setTime] = useState()
-  const [displayPriority, setDisplayPriority] = useState("-")
-  const [priority, setPriority] = useState("-")
+  const [priority, setPriority] = useState()
   const [description, setDescription] = useState()
 
   useEffect(() => {
@@ -35,19 +34,6 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
      setDisplayTime(time.slice(11, 19))
     }
   }, [time])
-
-  function updatePriorityDisplay(e) {
-    setDisplayPriority(e.target.value)
-  }
-
-  useEffect(() => {
-    if (priority == null) {
-     setDisplayPriority('-')
-    }
-    else {
-      setDisplayPriority(priority)
-    }
-  }, [priority])
 
   function fetchTask() {
     axios.get('/api/task/' + task_id)
@@ -79,10 +65,10 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
 
   //When user blurs away from description box update the
   // database.
-  function updateDescription(event) {
-    if (description != event.target.value) {
-      axios.post('/api/task/' + task_id + '/set_description', {
-        task_description: String(event.target.value)
+  function updateDescription(e) {
+    if (description != e.target.value) {
+      axios.post('/api/task/' + task_id + '/update_task', {
+        task_description: String(e.target.value)
       })
       .then(resp => {
         fetchTask()
@@ -91,18 +77,19 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     }
   }
 
-  function updateTime(event) {
-    const checkTimeSyntax = parseInt(event.target.value)
+  function updateTime(e) {
+    const checkTimeSyntax = parseInt(e.target.value)
+    console.log(checkTimeSyntax)
     let errorMessage = ""
-    if (isNaN(checkTimeSyntax) || event.target.value.length != 4) {
+    if (isNaN(checkTimeSyntax) || e.target.value.length != 4) {
       errorMessage = errorMessage + "Time setting must be 4 int referencing 24 hour time"
     }
-    else if (time != null && event.target.value == `${time.slice(11, 13)}${time.slice(14, 16)}`) {
+    else if (time != null && e.target.value == `${time.slice(11, 13)}${time.slice(14, 16)}`) {
       errorMessage = errorMessage + "The time input is the same as the current value"
     }
     if (errorMessage == "") {
-      axios.post('/api/task/' + task_id + '/set_time', {
-        time: event.target.value
+      axios.post('/api/task/' + task_id + '/update_task', {
+        time: e.target.value
       })
       .then(resp => {
         fetchTask()
@@ -110,18 +97,25 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
       .catch(resp => console.log(resp))
     }
     else {
-      if (event.target.value != "add time" && !isNaN(checkTimeSyntax) && (event.target.value != time.slice(11,19))) {
-        alert(errorMessage)
-        fetchTask()
+      if (time == null) {
+        if (e.target.value != "add time")
+          alert(errorMessage)
+          fetchTask()
+        }
+      else {
+        if (!isNaN(checkTimeSyntax) && (e.target.value != time.slice(11,19))) {
+          alert(errorMessage)
+          fetchTask() 
+        }
       }
     }
     
   }
 
-  function updateName(event) {
-    if (name != event.target.value) {
-      axios.post('/api/task/' + task_id + '/set_name', {
-        task_name: event.target.value
+  function updateName(e) {
+    if (name != e.target.value) {
+      axios.post('/api/task/' + task_id + '/update_task', {
+        task_name: e.target.value
       })
       .then(resp => {
         fetchTask()
@@ -130,17 +124,17 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     }
   }
 
-  function updatePriority(event) {
-    const checkPrioritySyntax = parseInt(event.target.value)
+  function updatePriority(e) {
+    const checkPrioritySyntax = parseInt(e.target.value)
     let errorMessage = ""
     if (isNaN(checkPrioritySyntax)
      || 0 > checkPrioritySyntax || checkPrioritySyntax > 3) {
       errorMessage = errorMessage + "Priority setting must be int between 0 - 3,\n"
     }
     if (errorMessage == "") {
-      if (priority != event.target.value) {
-        axios.post('/api/task/' + task_id + '/set_priority', {
-          task_priority: event.target.value
+      if (priority != e.target.value) {
+        axios.post('/api/task/' + task_id + '/update_task', {
+          task_priority: e.target.value
         })
         .then(resp => {
           fetchTask()
@@ -153,7 +147,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     }
   }
 
-  function deleteTask(event) {
+  function deleteTask(e) {
     axios.delete('/api/task/' + task_id)
     .then(resp => {
       reRenderDate()
@@ -162,7 +156,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     .catch(resp => console.log(resp))
   }
 
-  function moveFunction(event) {
+  function moveFunction(e) {
       // (1) prepare to moving: make absolute and on top by z-index
       setStyle({position: 'absolute', zIndex:1000, top:0, left:0});      
       
@@ -178,8 +172,8 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
          left: (pageX - offSetX - 25 + 'px') });
       }
 
-      function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
+      function onMouseMove(e) {
+        moveAt(e.pageX, e.pageY);
       }
 
       function setTaskCalender(target_id) {
@@ -196,17 +190,17 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
       }
 
       // (3) drop the ball, remove unneeded handlers
-      function onmouseup(event) {
-        let pageY = event.pageY
-        let pageX = event.pageX
+      function onmouseup(e) {
+        let pageY = e.pageY
+        let pageX = e.pageX
         document.removeEventListener('mousemove', onMouseMove);
-        setTaskCalender(event.target.id)
+        setTaskCalender(e.target.id)
         setStyle({position: 'relative'});
         document.removeEventListener('mouseup', onmouseup);
       };
 
       // move our absolutely positioned ball under the pointer
-      moveAt(event.pageX, event.pageY);
+      moveAt(e.pageX, e.pageY);
 
       // (2) move the ball on mousemove
       document.addEventListener('mousemove', onMouseMove);
@@ -218,20 +212,20 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     }; 
 
     return(
-      <div id={id} className='scheduledTask' style={style}>
+      <div id={id} className='scheduled-task' style={style}>
         {time != null &&
-          <input type='text' id={id} className='task--time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
+          <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
         {time == null && 
-          <input type='text' id={id} className='task--time' onBlur={updateTime} defaultValue="add time"></input>}
+          <input type='text' id={id} className='task__time' onBlur={updateTime} defaultValue="add time"></input>}
         {tag != null &&
           <p style={{position: "absolute", width: "15%", left: "15%"}}>{`${tag}- `}</p>}
         {tag != null &&
-          <input style={{width: "70%", left: "30%"}} type='text' id={id} className='task--name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+          <input style={{width: "70%", left: "30%"}} type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
         {(tag == null) &&  
-          <input type='text' id={id} className='task--name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        <input type='text' id={id} className='task--priority' onBlur={updatePriority} onChange={updatePriorityDisplay} value={displayPriority}></input>
-        <textarea id={id} className='task--description' defaultValue={description} onBlur={updateDescription}></textarea>
-        <button id={id} className='task--deleteButton' onClick={deleteTask}>X</button>
+          <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+        <textarea id={id} className='task__description' onBlur={updateDescription} defaultValue={description}></textarea>
+        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
       </div>
     )
   }

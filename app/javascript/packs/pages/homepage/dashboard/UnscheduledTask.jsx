@@ -5,8 +5,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   const [id, setId] = useState("unscheduled")
   const [tag, setTag] = useState()
   const [name, setName] = useState()
-  const [displayPriority, setDisplayPriority] = useState("-")
-  const [priority, setPriority] = useState("-")
+  const [priority, setPriority] = useState()
   const [description, setDescription] = useState()
 
   useEffect(() => {
@@ -21,19 +20,6 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
       setTag(task.tag)
     }
   }, [])
-
-  function updatePriorityDisplay(e) {
-    setDisplayPriority(e.target.value)
-  }
-
-  useEffect(() => {
-    if (priority == null) {
-     setDisplayPriority('-')
-    }
-    else {
-      setDisplayPriority(priority)
-    }
-  }, [priority])
 
   function fetchTask() {
     axios.get('/api/task/' + task_id)
@@ -63,10 +49,10 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
 
   //When user blurs away from description box update the
   // database.
-  function updateDescription(event) {
-    if (description != event.target.value) {
-      axios.post('/api/task/' + task_id + '/set_description', {
-        task_description: String(event.target.value)
+  function updateDescription(e) {
+    if (description != e.target.value) {
+      axios.post('/api/task/' + task_id + '/update_task', {
+        task_description: String(e.target.value)
       })
       .then(resp => {
         fetchTask()
@@ -76,7 +62,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   }
 
   function updateTime(e) {
-    axios.post('/api/task/' + task_id + '/set_time', {
+    axios.post('/api/task/' + task_id + '/update_task', {
       time: event.target.value
     })
     .then(resp => {
@@ -87,7 +73,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
 
   function updateName(e) {
     if (name != event.target.value) {
-      axios.post('/api/task/' + task_id + '/set_name', {
+      axios.post('/api/task/' + task_id + '/update_task', {
         task_name: event.target.value
       })
       .then(resp => {
@@ -97,17 +83,17 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
     }
   }
 
-  function updatePriority(event) {
-    const checkPrioritySyntax = parseInt(event.target.value)
+  function updatePriority(e) {
+    const checkPrioritySyntax = parseInt(e.target.value)
     let errorMessage = ""
     if (isNaN(checkPrioritySyntax)
      || 0 > checkPrioritySyntax || checkPrioritySyntax > 3) {
       errorMessage = errorMessage + "Priority setting must be int between 0 - 3,\n"
     }
     if (errorMessage == "") {
-      if (priority != event.target.value) {
-        axios.post('/api/task/' + task_id + '/set_priority', {
-          task_priority: event.target.value
+      if (priority != e.target.value) {
+        axios.post('/api/task/' + task_id + '/update_task', {
+          task_priority: e.target.value
         })
         .then(resp => {
           fetchTask()
@@ -120,7 +106,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
     }
   }
 
-  function deleteTask(event) {
+  function deleteTask(e) {
     axios.delete('/api/task/' + task_id)
     .then(resp => {
       reRenderList()
@@ -129,7 +115,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
     .catch(resp => console.log(resp))
   }
 
-  function moveFunction(event) {
+  function moveFunction(e) {
       // (1) prepare to moving: make absolute and on top by z-index
       setStyle({position: 'absolute', zIndex:1000, top:0, left:0});      
       
@@ -146,8 +132,8 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
          left: (pageX - offSetX - 25 + 'px') });
       }
 
-      function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
+      function onMouseMove(e) {
+        moveAt(e.pageX, event.pageY);
       }
 
       function setTaskCalender(target_id) {
@@ -164,17 +150,17 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
       }
 
       // (3) drop the ball, remove unneeded handlers
-      function onmouseup(event) {
-        let pageY = event.pageY
-        let pageX = event.pageX
+      function onmouseup(e) {
+        let pageY = e.pageY
+        let pageX = e.pageX
         document.removeEventListener('mousemove', onMouseMove);
-        setTaskCalender(event.target.id)
+        setTaskCalender(e.target.id)
         setStyle({position: 'relative'});
         document.removeEventListener('mouseup', onmouseup);
       };
 
       // move our absolutely positioned ball under the pointer
-      moveAt(event.pageX, event.pageY);
+      moveAt(e.pageX, e.pageY);
 
       // (2) move the ball on mousemove
       document.addEventListener('mousemove', onMouseMove);
@@ -186,16 +172,16 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
     };
 
     return(
-      <div id={id} className="unscheduledTask" style={style}>
+      <div id={id} className="unscheduled-task" style={style}>
         {tag != null &&
           <p style={{width: "15%"}}>{`${tag}- `}</p>}
         {tag != null &&
-          <input style={{width: "85%", left: "15%"}} type='text' id={id} className='task--name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+          <input style={{width: "85%", left: "15%"}} type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
         {(tag == null) &&  
-          <input type='text' id={id} className='task--name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        <input type='text' id={id} className='task--priority' onBlur={updatePriority} onChange={updatePriorityDisplay} value={displayPriority}></input>
-        <textarea id={id} className='task--description' defaultValue={description} onBlur={updateDescription}></textarea>
-        <button id={id} className='task--deleteButton' onClick={deleteTask}>X</button>
+          <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+        <textarea id={id} className='task__description' defaultValue={description} onBlur={updateDescription}></textarea>
+        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
       </div>
     )
   }

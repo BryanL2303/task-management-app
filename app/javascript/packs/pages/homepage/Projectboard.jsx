@@ -16,14 +16,14 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
 
 	useEffect(()=> {
 		setDescription(project.attributes.project_description)
-		document.getElementsByClassName('project--descriptionbox')[0].value = project.attributes.project_description
-		document.getElementsByClassName('project--tag')[0].value = project.attributes.tag
+		document.getElementsByClassName('project__description')[0].value = project.attributes.project_description
+		document.getElementsByClassName('project__tag')[0].value = project.attributes.tag
 		setProject_Id(project.id)
 	}, [project])
 
 	function saveDescription(e) {
 		if (description != e.target.value) {
-			axios.post('/api/project/' + project.id + '/set_description', {
+			axios.post('/api/project/' + project.id + '/update_project', {
 		    project_description: String(e.target.value)
 		  })
 		  .then(resp => {
@@ -39,9 +39,9 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
 			showDashboard()
 			axios.delete('/api/project/' + project_id)
 		  .then(resp => {
+		  	sessionStorage.removeItem(`project${project_id}`)
 		  	showDashboard()
 		  	fetchProjects()
-		  	sessionStorage.removeItem(`project${project_id}`)
 		  })
 		  .catch(resp => console.log(resp))
 		}
@@ -50,8 +50,8 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
 	function fetchProjects() {
     axios.get('/api/account/' + accountState.id + '/projects')
     .then(resp => {
+    	sessionStorage.setItem('projectList', JSON.stringify(resp.data.data))
       setProjects(resp.data.data)
-      sessionStorage.setItem('projectList', JSON.stringify(resp.data.data))
     })
     .catch(resp => console.log(resp))
   }
@@ -62,14 +62,14 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
     		alert("The tag should be within 10 characters")
     	}
     	else{
-	      axios.post('/api/project/' + project_id + '/setTag', {
+	      axios.post('/api/project/' + project_id + '/update_project', {
 	        tag: String(e.target.value)
 	      })
 	      .then(resp => {
-	        reRenderProject(project.id)
 	        project.relationships.tasks.data.map(task => {
 	        	sessionStorage.removeItem(`task${task.id}`)
 	        })
+	        reRenderProject(project.id)
 	      })
 	      .catch(resp => console.log(resp))    		
     	}
@@ -77,15 +77,15 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
   }
 
 	return(
-		<div className="projectboard--container" style={projectboardStyle}>
-			<div className="projectboard--header">
+		<div className="project__container" style={projectboardStyle}>
+			<div className="project__header">
 				<h1>{project.attributes.project_name}</h1>
 				<label>Tag (This will prefix all task names): </label>
-				<input type='text' className='project--tag' onBlur={updateTag} defaultValue={ project.attributes.tag }></input>
-				<button className="button--delete_project" onClick={ deleteProject }>Delete Project</button>
+				<input type='text' className='project__tag' onBlur={updateTag} defaultValue={ project.attributes.tag }></input>
+				<button className="project__delete--button" onClick={ deleteProject }>Delete Project</button>
 			</div>
 
-			<textarea className="project--descriptionbox" style={projectDescriptionStyle} onBlur={ saveDescription } defaultValue={ description }></textarea>
+			<textarea className="project__description" style={projectDescriptionStyle} onBlur={ saveDescription } defaultValue={ description }></textarea>
 			
 			<TaskList project_id={ project_id } project_name={project.attributes.project_name}/>
 		</div>

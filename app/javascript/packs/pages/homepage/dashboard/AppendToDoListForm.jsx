@@ -4,9 +4,6 @@ import { AccountStateContext } from '../context/AccountStateContext'
 
 const AppendToDoListForm = ({ reRenderList }) => {
   const [displayForm, setDisplayForm] = useState(false)
-  const [name, setName] = useState()
-  const [priority, setPriority] = useState()
-  const [description, setDescription] = useState("")
   const [accountState, setAccountState] = useContext(AccountStateContext)
 
   function showForm(e) {
@@ -21,47 +18,32 @@ const AppendToDoListForm = ({ reRenderList }) => {
     }
   }
 
-  function changeName(e) {
-    setName(e.target.value)
-  }
-
-  function changePriority(e) {
-    setPriority(e.target.value)
-  }
-
-  function changeDescription(e) {
-    setDescription(e.target.value)
-  }
-
   function submitForm(e) {
     e.preventDefault()
-    const checkPrioritySyntax = parseInt(priority)
+    const checkPrioritySyntax = parseInt(e.target[1].value)
     if ((!isNaN(checkPrioritySyntax)) 
       && ((0) <= checkPrioritySyntax && checkPrioritySyntax <= 3)) {
-      postCreateTask()
+      postCreateTask(e.target)
     }
     else {
       alert("Priority setting must be int between 0 - 3")
     }
   }
 
-  function postCreateTask() {
+  function postCreateTask(form) {
     axios.post('/api/task/1/create_task', {
-      task_name: name,
-      task_priority: priority,
-      task_description: description,
+      task_name: form[0].value,
+      task_priority: form[1].value,
+      task_description: form[2].value,
       scheduled: false,
       account_id: accountState.id
     })
     .then(resp => {
       reRenderList()
-      document.getElementsByClassName('form--name')[0].focus()
-      document.getElementsByClassName('form--name')[0].value = ''
-      document.getElementsByClassName('form--priority')[0].value = ''
-      document.getElementsByClassName('form--description')[0].value = ""
-      setName()
-      setPriority()
-      setDescription("")
+      document.getElementsByClassName('form__name')[0].focus()
+      document.getElementsByClassName('form__name')[0].value = ''
+      document.getElementsByClassName('form__priority')[0].value = ''
+      document.getElementsByClassName('form__description')[0].value = ""
     })
     .catch(resp => console.log(resp))
   }
@@ -69,9 +51,9 @@ const AppendToDoListForm = ({ reRenderList }) => {
   if(displayForm == true){
     return(
       <form className='form' onSubmit={ submitForm } onBlur={ hideForm }>
-        <input className='form--name' placeholder='task_name' onChange={ changeName }></input>
-        <input className='form--priority' placeholder='task_priority' onChange={ changePriority }></input>
-        <textarea className='form--description' placeholder='task_description' onChange={ changeDescription }></textarea>
+        <input className='form__name' placeholder='task_name'></input>
+        <input className='form__priority' placeholder='task_priority'></input>
+        <textarea className='form__description' placeholder='task_description'></textarea>
         <button>Add New Task</button>
       </form>
     )

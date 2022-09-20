@@ -1,23 +1,23 @@
 @media screen and (min-width: 500px){
-	.projectTask{
+	.project-task{
 		height: 100px;
 		position: relative;
 		border-top: solid;
 	}
 
-	.projectTask input{
+	.project-task input{
 		border-style: none;
 		height: 25px;
 	}
 
-	.projectTask .task--name{
+	.project-task .task__name{
 		position: absolute;
 		left: 0%;
 		top: 0%;
 		width: 80%;
 	}
 
-	.projectTask .task--priority{
+	.project-task .task__priority{
 		position: absolute;
 		left: 80%;
 		top: 0%;
@@ -25,7 +25,7 @@
 		text-align: center;
 	}
 
-	.projectTask textarea{
+	.project-task textarea{
 		position: absolute;
 		top: 25px;
 		left: 0%;
@@ -33,7 +33,7 @@
 		height: 75px;
 	}
 
-	.projectTask .task--deleteButton{
+	.project-task .task__delete--button{
 		position: absolute;
 		left: 90%;
 		top: 0%;

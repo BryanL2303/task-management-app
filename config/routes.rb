@@ -5,38 +5,32 @@ Rails.application.routes.draw do
     resources :account do 
       member do
         get '/projects' => 'account#getProjects'
-        get '/getUnscheduledTasks' => 'account#getUnscheduledTasks'
-        get '/getTasksByDate/:calender_id' => 'account#getTasksByDate'
-        get '/getTasksByProject/:project_id' => 'account#getTasksByProject'
-        post '/checkNameExistence' => 'account#checkNameExistence'
-        post '/createAccount' => 'account#createAccount'
-        post '/authenticateAccount' => 'account#authenticateAccount'
+        get '/get_unscheduled_tasks' => 'account#getUnscheduledTasks'
+        get '/get_tasks_by_date/:calender_id' => 'account#getTasksByDate'
+        get '/get_tasks_by_project/:project_id' => 'account#getTasksByProject'
+        post '/create_account' => 'account#createAccount'
+        post '/authenticate_account' => 'account#authenticateAccount'
       end
     end
 
     resources :calender, param: :date do
       member do
-        post '/set_week_dates' => 'calender#set_week_dates'
+        post '/set_week_dates' => 'calender#setWeekDates'
       end
     end
 
     resources :project do
       member do
-        post '/create_project' => 'project#create_project'
-        post '/set_description' => 'project#set_description'
-        post '/setTag' => 'project#setTag'
+        post '/create_project' => 'project#createProject'
+        post '/update_project' => 'project#updateProject'
       end
     end
 
     resources :task do 
       member do
-        post '/create_task' => 'task#create_task'
-        post '/set_description' => 'task#set_description'
-        post '/set_completed' => 'task#set_completed'
-        post '/set_time' => 'task#set_time'
-        post '/set_name' => 'task#set_name'
-        post '/set_priority' => 'task#set_priority'
-        post '/reschedule_task' => 'task#reschedule_task'
+        post '/create_task' => 'task#createTask'
+        post '/update_task' => 'task#updateTask'
+        post '/reschedule_task' => 'task#rescheduleTask'
       end
     end
   end

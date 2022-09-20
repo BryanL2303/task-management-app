@@ -1,16 +1,16 @@
 @media screen and (max-width: 500px){
-	.scheduledTask{
+	.scheduled-task{
 		height: 100px;
 		position: relative;
 		border-top: solid;
 	}
 
-	.scheduledTask input{
+	.scheduled-task input{
 		border-style: none;
 		height: 25px;
 	}
 
-	.scheduledTask .task--time{
+	.scheduled-task .task__time{
 		position: absolute;
 		left: 0%;
 		top: 0%;
@@ -18,14 +18,14 @@
 		background-color: inherit;
 	}
 
-	.scheduledTask .task--name{
+	.scheduled-task .task__name{
 		position: absolute;
 		left: 15%;
 		top: 0%;
 		width: 65%;
 	}
 
-	.scheduledTask .task--priority{
+	.scheduled-task .task__priority{
 		position: absolute;
 		left: 80%;
 		top: 0%;
@@ -33,7 +33,7 @@
 		text-align: center;
 	}
 
-	.scheduledTask textarea{
+	.scheduled-task textarea{
 		position: absolute;
 		top: 25px;
 		left: 0%;
@@ -42,7 +42,7 @@
 		background-color: inherit;
 	}
 
-	.scheduledTask .task--deleteButton{
+	.scheduled-task .task__delete--button{
 		position: absolute;
 		left: 90%;
 		top: 0%;

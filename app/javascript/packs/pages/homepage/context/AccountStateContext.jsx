@@ -4,6 +4,7 @@ export const AccountStateContext = createContext([[], function(){}])
 
 export const AccountStateProvider = props => {
 	let stateOnRender
+	//Check sessionStorage to see if user is logged in
 	if (sessionStorage.getItem('id') != null &&
 		sessionStorage.getItem('id') != 'undefined') {
 		stateOnRender = {

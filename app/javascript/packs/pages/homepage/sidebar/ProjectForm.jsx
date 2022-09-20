@@ -4,8 +4,6 @@ import { AccountStateContext } from '../context/AccountStateContext'
 
 const ProjectForm = ({ fetchProjects }) => {
   const [displayForm, setDisplayForm] = useState(false)
-  const [name, setName] = useState()
-  const [description, setDescription] = useState()
   const [accountState, setAccountState] = useContext(AccountStateContext)
 
   function showForm(e) {
@@ -19,29 +17,19 @@ const ProjectForm = ({ fetchProjects }) => {
     }
   }
 
-  function changeName(e) {
-    setName(e.target.value)
-  }
-
-  function changeDescription(e) {
-    setDescription(e.target.value)
-  }
-
   function submitForm(e) {
     e.preventDefault()
     axios.post('/api/project/1/create_project', {
-      project_name: name,
-      project_description: description,
+      project_name: e.target[0].value,
+      project_description: e.target[1].value,
       account_id: accountState.id,
       tag: name.slice(0, 10)
     })
     .then(resp => {
       fetchProjects()
-      document.getElementsByClassName('form--name')[0].focus()
-      document.getElementsByClassName('form--name')[0].value = ''
-      document.getElementsByClassName('form--description')[0].value = ""
-      setName()
-      setDescription()
+      document.getElementsByClassName('form__name')[0].focus()
+      document.getElementsByClassName('form__name')[0].value = ''
+      document.getElementsByClassName('form__description')[0].value = ""
     })
     .catch(resp => console.log(resp))
   }
@@ -49,8 +37,8 @@ const ProjectForm = ({ fetchProjects }) => {
   if (displayForm == true) {
     return(
       <form className='form' onSubmit={ submitForm } onBlur={ hideForm }>
-        <input className='form--name' placeholder='project_name' onChange={ changeName }></input>
-        <textarea className='form--description' placeholder='project_description' onChange={ changeDescription }></textarea>
+        <input className='form__name' placeholder='project_name'></input>
+        <textarea className='form__description' placeholder='project_description'></textarea>
         <button>Add New Project</button>
       </form>
     )

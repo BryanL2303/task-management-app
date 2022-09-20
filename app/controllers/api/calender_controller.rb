@@ -40,7 +40,7 @@ module Api
 			render json: CalenderSerializer.new(date, options).serialized_json
 		end
 
-		def set_week_dates
+		def setWeekDates
 			dates = Calender.where(date: [params[:date0]...params[:date7]]).order("date")
 			past_dates = Calender.where(date: ["2000-01-01"...params[:date0]])
 			if past_dates.length != 0

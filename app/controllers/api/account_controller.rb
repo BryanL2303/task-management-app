@@ -2,31 +2,31 @@ module Api
 	class AccountController < ApplicationController
 		protect_from_forgery with: :null_session
 
-		def checkNameExistence
-			account = Account.find_by(name: params[:name])
-			if account == nil 
-				render json: false
-			else
-				render json: true
-			end
-		end
-
 		def createAccount
 			account = Account.new(name: params[:name], password: params[:password])
 
-			if account.save
-				render json: {'id': account.id, "name": account.name}
+			if account == nil
+				if account.save
+					render json: {'id': account.id, "name": account.name}
+				else
+					render json: {error: account.errors.messages}, status: 422
+				end
 			else
-				render json: {error: account.errors.messages}, status: 422
+				render json: false
 			end
+			
 		end
 
 		def authenticateAccount
 			account = Account.find_by(name: params[:name])
-			if account.password == params[:password]
-				render json: {'id': account.id, "name": account.name}
-			else
+			if account == nil
 				render json: false
+			else
+				if account.password == params[:password]
+					render json: {'id': account.id, "name": account.name}
+				else
+					render json: false
+				end
 			end
 		end
 
