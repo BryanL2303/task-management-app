@@ -1,30 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AccountStateContext } from './context/AccountStateContext'
 import { HomePageStateContext } from './context/HomePageStateContext'
-import { DashboardStyleContext } from './context/DashboardStyleContext'
-import { ProjectboardStyleContext } from './context/ProjectboardStyleContext'
-import { ProjectDescriptionStyleContext } from './context/ProjectDescriptionStyleContext'
-import { ProjectTaskListStyleContext } from './context/ProjectTaskListStyleContext'
-import { SideBarStyleContext } from './context/SideBarStyleContext'
 
 const TopBar = () => {
   const [accountState, setAccountState] = useContext(AccountStateContext)
   const [homePageState, setHomePageState] = useContext(HomePageStateContext)
-  const [dashboardStyle, setDashboardStyle] = useContext(DashboardStyleContext)
-  const [projectboardStyle, setProjectboardStyle] = useContext(ProjectboardStyleContext)
-  const [projectDescriptionStyle, setProjectDescriptionStyle] = useContext(ProjectDescriptionStyleContext)
-  const [projectTaskListStyle, setProjectTaskListStyle] = useContext(ProjectTaskListStyleContext)
-  const [sideBarStyle, setSideBarStyle] = useContext(SideBarStyleContext)
-  
-  const [sideBarHidden, setSideBarHidden] = useState(false)
-  const [projectTaskListHidden, setProjectTaskListHidden] = useState(false)
   const [accountName, setAccountName] = useState("loading")
-
-  useEffect(() => {
-    if (screen.width <= 500) {
-      setSideBarHidden(true)
-    }
-  }, [])
 
   useEffect(() => {
     if (accountState != null) {
@@ -33,68 +14,42 @@ const TopBar = () => {
   }, [accountState])
 
   function toggleSideBar(e) {
-    if (sideBarHidden == false) {
-      setSideBarStyle({
-        visibility: 'hidden'
-      })
-      setSideBarHidden(true)
-      setDashboardStyle({
-        width: '100%',
-        left: '0%',
-        visibility: 'visible'
-      })
-      setProjectboardStyle({
-        width: '100%',
-        left: '0%',
-        visibility: 'visible'
-      })
+    let sideBar = document.getElementsByClassName('sidebar-container')[0]
+    let board
+    if (sessionStorage.getItem('homePageState') == 'dashboard') {
+      board = document.getElementsByClassName('dashboard-container')[0]
+    }
+    else if (sessionStorage.getItem('homePageState') == 'project') {
+      board = document.getElementsByClassName('project__container')[0]
+    }
+    if (sideBar.style['visibility'] != 'hidden') {
+      sideBar.style['visibility'] = 'hidden'   
+      board.style['width'] = '100%'
+      board.style['left'] = '0%'
+      board.style['visibility'] = 'visible'
     }
     else {
-      setSideBarStyle({
-          visibility: 'visible'
-        })
-      setSideBarHidden(false)
-      if (screen.width <= 500) {
-        setDashboardStyle({
-          visibility: 'hidden'
-        })
-        setProjectboardStyle({
-          visibility: 'hidden'
-        })
+      sideBar.style['visibility'] = 'visible'
+      if (screen.width <= 500) {        
+        board.style['visibility'] = 'hidden'
       }
       else {
-        setDashboardStyle({
-          width: '75%',
-          left: '25%'
-        })
-        setProjectboardStyle({
-          width: '75%',
-          left: '25%'
-        })
+        board.style['width'] = '75%'
+        board.style['left'] = '25%'
       }
     }
   }
 
   function toggleProjectTaskList() {
-    if (projectTaskListHidden == false) {
-      setProjectDescriptionStyle({
-        width: '100%'
-      })
-      setProjectTaskListStyle({
-        width: '0%',
-        visibility: 'hidden'
-      })
-      setProjectTaskListHidden(true)  
+    let projectDescription = document.getElementsByClassName('project__description')[0]
+    let projectTaskList = document.getElementsByClassName('project__task-container')[0]
+    if (projectTaskList.style['visibility'] != 'hidden') {
+      projectDescription.style['width'] = '100%'
+      projectTaskList.style['visibility'] = 'hidden'
     }
     else {
-      setProjectDescriptionStyle({
-        width: '50%'
-      })
-      setProjectTaskListStyle({
-        width: '50%',
-        visibility: 'visible'
-      })
-      setProjectTaskListHidden(false)
+      projectDescription.style['width'] = '50%'
+      projectTaskList.style['visibility'] = 'visible'
     }
   }
 

@@ -3,12 +3,10 @@ import axios from 'axios'
 import { ProjectForm } from './sidebar/ProjectForm'
 import { AccountStateContext } from './context/AccountStateContext'
 import { ProjectListContext } from './context/ProjectListContext'
-import { SideBarStyleContext } from './context/SideBarStyleContext'
 
 const SideBar = ({ showDashboard, showProjectboard }) => {
   const [accountState, setAccountState] = useContext(AccountStateContext)
   const [projects, setProjects] = useContext(ProjectListContext)
-  const [sideBarStyle, setSideBarStyle] = useContext(SideBarStyleContext)
 
   useEffect(() => {
     if (accountState != null && sessionStorage.getItem('projectList') == null) {
@@ -26,7 +24,7 @@ const SideBar = ({ showDashboard, showProjectboard }) => {
   }
 
   return(
-    <div className='sidebar-container' style={sideBarStyle}>
+    <div className='sidebar-container'>
       <div className='projects-container'>
         <button onClick={ showDashboard }>Dashboard</button>
         {projects.map((project) => {

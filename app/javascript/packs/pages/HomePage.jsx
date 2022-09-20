@@ -9,11 +9,6 @@ import { HomePageStateContext } from './homepage/context/HomePageStateContext'
 import { CurrentDisplayProjectContext } from './homepage/context/CurrentDisplayProjectContext'
 import { ProjectListProvider } from './homepage/context/ProjectListContext'
 import { DashboardStateProvider } from './homepage/context/DashboardStateContext'
-import { DashboardStyleProvider } from './homepage/context/DashboardStyleContext'
-import { SideBarStyleProvider } from './homepage/context/SideBarStyleContext'
-import { ProjectboardStyleProvider } from './homepage/context/ProjectboardStyleContext'
-import { ProjectDescriptionStyleProvider } from './homepage/context/ProjectDescriptionStyleContext'
-import { ProjectTaskListStyleProvider } from './homepage/context/ProjectTaskListStyleContext'
 import { UnscheduledTasksProvider } from './homepage/context/UnscheduledTasksList'
 
 const HomePage = () => {
@@ -57,7 +52,7 @@ const HomePage = () => {
   //Waits for the project state to be set before rendering components
   useEffect(() => {
     if (currentDisplayProjectState != null && currentDisplayProjectState != 'undefined') {
-      setHomePageState("project")  
+      setHomePageState("project")
     }
   }, [currentDisplayProjectState])
 
@@ -65,11 +60,6 @@ const HomePage = () => {
     <div className='homepage-container'>
       <ProjectListProvider>
       <DashboardStateProvider>
-      <ProjectboardStyleProvider>
-      <ProjectDescriptionStyleProvider>
-      <ProjectTaskListStyleProvider>
-      <SideBarStyleProvider>
-      <DashboardStyleProvider>
       <UnscheduledTasksProvider>
         <TopBar/>
       	<SideBar showDashboard={ showDashboard } showProjectboard={ showProjectboard }/>
@@ -77,11 +67,6 @@ const HomePage = () => {
         {homePageState=="dashboard" && <Dashboard/>}
         {homePageState=="project" && <Projectboard project={ currentDisplayProjectState } showDashboard={ showDashboard } reRenderProject={ fetchProject }/>}
       </UnscheduledTasksProvider>
-      </DashboardStyleProvider>
-      </SideBarStyleProvider>
-      </ProjectTaskListStyleProvider>
-      </ProjectDescriptionStyleProvider>
-      </ProjectboardStyleProvider>
       </DashboardStateProvider>
       </ProjectListProvider>
     </div>

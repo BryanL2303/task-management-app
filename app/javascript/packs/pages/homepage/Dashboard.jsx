@@ -5,7 +5,6 @@ import { UnscheduledTask } from './dashboard/UnscheduledTask'
 import { AppendToDoListForm } from './dashboard/AppendToDoListForm'
 import { AccountStateContext } from './context/AccountStateContext'
 import { DashboardStateContext } from './context/DashboardStateContext'
-import { DashboardStyleContext } from './context/DashboardStyleContext'
 import { UnscheduledTasksList } from './context/UnscheduledTasksList'
 
 const Dashboard = () => {
@@ -13,7 +12,6 @@ const Dashboard = () => {
   const [calender, setCalender] = useState([])
   const [accountState, setAccountState] = useContext(AccountStateContext)
   const [dashboardState, setDashboardState] = useContext(DashboardStateContext)
-  const [dashboardStyle, setDashboardStyle] = useContext(DashboardStyleContext)
   const [unscheduledTasks, setUnscheduledTasks] = useContext(UnscheduledTasksList)
 
   useEffect(() => {
@@ -79,11 +77,11 @@ const Dashboard = () => {
   }
 
   return(
-    <div className='dashboard-container' style={dashboardStyle}>
+    <div className='dashboard-container'>
       <div className= 'dailytimetable-container'>
         {iteration.map(index => {
           return(
-            <DailyTimetable key={ index } index={ index } reRenderPage={ reRenderPage }/>
+            <DailyTimetable key={index} index={index} reRenderPage={reRenderPage}/>
           )
         })}
       </div>
@@ -92,11 +90,11 @@ const Dashboard = () => {
         <h1 id="unscheduled">Unscheduled Tasks</h1>
         {unscheduledTasks.map((task)=> {
           return(
-            <UnscheduledTask key={ task.id } task_id={ task.id } reRenderPage={ reRenderPage } reRenderList={ fetchUnscheduledTasks }/>
+            <UnscheduledTask key={task.id} task_id={task.id} reRenderPage={reRenderPage} reRenderList={fetchUnscheduledTasks}/>
           )
         })}
         
-        <AppendToDoListForm reRenderList={ fetchUnscheduledTasks }/>
+        <AppendToDoListForm reRenderList={fetchUnscheduledTasks}/>
       </div>
     </div>
   )

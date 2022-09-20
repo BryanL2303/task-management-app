@@ -3,13 +3,11 @@ import axios from 'axios'
 import { ProjectTask } from './ProjectTask'
 import { AppendProjectTaskForm } from './AppendProjectTaskForm'
 import { AccountStateContext } from '../context/AccountStateContext'
-import { ProjectTaskListStyleContext } from '../context/ProjectTaskListStyleContext'
 
 const TaskList = ({ project_id, project_name }) => {
 	const [projectTasks, setProjectTasks] = useState([])
 	const [accountState, setAccountState] = useContext(AccountStateContext)
-	const [projectTaskListStyle, setProjectTaskListStyle] = useContext(ProjectTaskListStyleContext)
-
+	
 	useEffect(() => {
 		if (sessionStorage.getItem(`projectTasks${project_id}`) == null) {
       fetchProjectTasks()
@@ -29,7 +27,7 @@ const TaskList = ({ project_id, project_name }) => {
 	}
 
 	return(
-		<div className="project__task-container" style={projectTaskListStyle}>
+		<div className="project__task-container">
 			{projectTasks.map((task)=> {
 		    return(
 		      <ProjectTask key={ task.id } task_id={ task.id } reRenderList={ fetchProjectTasks } view="project"/>

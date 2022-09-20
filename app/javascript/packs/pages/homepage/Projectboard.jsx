@@ -3,17 +3,13 @@ import axios from 'axios'
 import { TaskList } from './projectboard/TaskList'
 import { AccountStateContext } from './context/AccountStateContext'
 import { ProjectListContext } from './context/ProjectListContext'
-import { ProjectboardStyleContext } from './context/ProjectboardStyleContext'
-import { ProjectDescriptionStyleContext } from './context/ProjectDescriptionStyleContext'
 
 const Projectboard = ({project, showDashboard, reRenderProject}) => {
   const [description, setDescription] = useState(project.attributes.project_description)
   const [project_id, setProject_Id] = useState(project.id)
   const [accountState, setAccountState] = useContext(AccountStateContext)
   const [projects, setProjects] = useContext(ProjectListContext)
-  const [projectboardStyle, setProjectboardStyle] = useContext(ProjectboardStyleContext)
-  const [projectDescriptionStyle, setProjectDescriptionStyle] = useContext(ProjectDescriptionStyleContext)
-
+  
 	useEffect(()=> {
 		setDescription(project.attributes.project_description)
 		document.getElementsByClassName('project__description')[0].value = project.attributes.project_description
@@ -77,7 +73,7 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
   }
 
 	return(
-		<div className="project__container" style={projectboardStyle}>
+		<div className="project__container">
 			<div className="project__header">
 				<h1>{project.attributes.project_name}</h1>
 				<label>Tag (This will prefix all task names): </label>
@@ -85,7 +81,7 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
 				<button className="project__delete--button" onClick={ deleteProject }>Delete Project</button>
 			</div>
 
-			<textarea className="project__description" style={projectDescriptionStyle} onBlur={ saveDescription } defaultValue={ description }></textarea>
+			<textarea className="project__description" onBlur={ saveDescription } defaultValue={ description }></textarea>
 			
 			<TaskList project_id={ project_id } project_name={project.attributes.project_name}/>
 		</div>

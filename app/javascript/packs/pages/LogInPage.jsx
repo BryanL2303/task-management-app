@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-import setState from '../functions/setState'
 
 const LogInPage = () => {
   //If there is an ongoing session go to home page
