@@ -1,6 +1,5 @@
-@media screen and (min-width: 500px){
+@media screen and (min-width: 950px){
 	.scheduled-task{
-		height: 100px;
 		position: relative;
 		border-top: solid;
 	}
@@ -11,43 +10,27 @@
 	}
 
 	.scheduled-task .task__time{
-		position: absolute;
-		left: 0%;
-		top: 0%;
 		width: 15%;
 		background-color: inherit;
 	}
 
 	.scheduled-task .task__name{
-		position: absolute;
-		left: 15%;
-		top: 0%;
 		width: 65%;
 	}
 
 	.scheduled-task .task__priority{
-		position: absolute;
-		left: 80%;
-		top: 0%;
 		width: 10%;
 		text-align: center;
 	}
 
 	.scheduled-task textarea{
-		position: absolute;
-		top: 25px;
-		left: 0%;
 		width: 90%;
-		height: 75px;
 		background-color: inherit;
 	}
 
 	.scheduled-task .task__delete--button{
-		position: absolute;
-		left: 90%;
-		top: 0%;
-		height: 100%;
-		width: 10%;
+		height: auto;
+		width: 8%;
 		border-radius: 5px;
 	}
 }

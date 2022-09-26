@@ -1,0 +1,73 @@
+@media screen and (max-width: 950px){
+	.topbar-container{
+		position: relative;
+		height: 5%;
+		width: 100%;
+		border-bottom: solid;
+		background-color: inherit;
+	}
+
+	.topbar-container .sidebar--button{
+		height: 100%;
+		border: none;
+		background-color: inherit;
+	}
+
+	.topbar-container .sidebar--button img{
+		height: 100%;
+	}
+
+	.topbar-container .user-component {
+		position: absolute;
+		top: 0%;
+		right: 0%;
+		height: 100%;
+		display: flex;
+	}
+
+	.topbar-container .tutorial--button {
+		margin-top: 2.5%;
+		position: relative;
+		height: 30px;
+		width: 30px;
+		border-radius: 15px;
+		font-size: 20px;
+	}
+
+	.topbar-container .account-name__label{
+		position: relative;
+		margin: 5px;
+	}
+
+	.topbar-container .show-menu--button{
+		border: none;
+		padding: 10px;
+		background-color: inherit;
+	}
+
+	.topbar-container .show-menu--button:hover{
+		opacity: 0.8;
+		cursor: pointer;
+	}
+
+	.topbar-container .show-menu--button img{
+		height: 100%;
+	}
+
+	.topbar-container .user-menu{
+		visibility: hidden;
+		position: absolute;
+		top: 100%;
+		right: 0%;
+		z-index: 1000;
+		width: 100%;
+	}
+
+	.topbar-container .user-menu button{
+		width: 100%;
+	}
+
+	.topbar-container .user-menu button:hover{
+		opacity: 0.8;
+	}
+}

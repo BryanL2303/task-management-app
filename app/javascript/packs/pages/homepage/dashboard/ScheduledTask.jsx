@@ -5,10 +5,12 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   const [id, setId] = useState()
   const [tag, setTag] = useState()
   const [name, setName] = useState()
-  const [displayTime, setDisplayTime] = useState("loading")
   const [time, setTime] = useState()
   const [priority, setPriority] = useState()
   const [description, setDescription] = useState()
+  //Time display is required since there is a conversion from
+  //Ruby time object to time string
+  const [displayTime, setDisplayTime] = useState("loading")
 
   useEffect(() => {
     if (sessionStorage.getItem(`task${task_id}`) == null) {
@@ -28,6 +30,12 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   function updateTimeDisplay(e) {
     setDisplayTime(e.target.value)
   }
+
+  useEffect(() => {
+    let descriptionBox = document.getElementsByClassName(`task__description ${task_id}`)[0]
+    descriptionBox.style['height'] = '0px'
+    descriptionBox.style['height'] = `${descriptionBox.scrollHeight}px`
+  }, [description])
 
   useEffect(() => {
     if (time != null) {
@@ -62,6 +70,57 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     left: 0,
     top: 0
   });
+
+  function moveFunction(e) {
+    // (1) prepare to moving: make absolute and on top by z-index
+    setStyle({position: 'absolute', zIndex:1000, top:0, left:0});      
+
+    // centers the ball at (pageX, pageY) coordinates
+    function moveAt(pageX, pageY) {
+      let offSetY = document.getElementsByClassName("dashboard-container")[0].offsetTop
+      let offSetX = document.getElementsByClassName("dashboard-container")[0].offsetLeft
+      setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY - 25 + 'px'),
+        left: (pageX - offSetX - 25 + 'px') });
+    }
+
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
+    }
+
+    function setTaskCalender(target_id) {
+      if (target_id != "" && id != target_id) {
+        axios.post('/api/task/' + task_id + '/reschedule_task', {
+          calender_id: target_id
+        })
+        .then(resp => {
+          reRenderPage()
+          fetchTask()
+        })
+        .catch(resp => console.log(resp))
+      }
+    }
+
+    // (3) drop the ball, remove unneeded handlers
+    function onmouseup(e) {
+      let pageY = e.pageY
+      let pageX = e.pageX
+      document.removeEventListener('mousemove', onMouseMove);
+      setTaskCalender(e.target.id)
+      setStyle({position: 'relative'});
+      document.removeEventListener('mouseup', onmouseup);
+    };
+
+    // move our absolutely positioned ball under the pointer
+    moveAt(e.pageX, e.pageY);
+
+    // (2) move the ball on mousemove
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onmouseup);
+
+    ondragstart = function() {
+    return false;
+    };
+  };
 
   //When user blurs away from description box update the
   // database.
@@ -156,78 +215,21 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     .catch(resp => console.log(resp))
   }
 
-  function moveFunction(e) {
-      // (1) prepare to moving: make absolute and on top by z-index
-      setStyle({position: 'absolute', zIndex:1000, top:0, left:0});      
-      
-      // move it out of any current parents directly into body
-      // to make it positioned relative to the body
-      document.body.append(this);
-
-      // centers the ball at (pageX, pageY) coordinates
-      function moveAt(pageX, pageY) {
-        let offSetY = document.getElementsByClassName("dashboard-container")[0].offsetTop
-        let offSetX = document.getElementsByClassName("dashboard-container")[0].offsetLeft
-        setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY - 25 + 'px'),
-         left: (pageX - offSetX - 25 + 'px') });
-      }
-
-      function onMouseMove(e) {
-        moveAt(e.pageX, e.pageY);
-      }
-
-      function setTaskCalender(target_id) {
-        if (target_id != "" && id != target_id) {
-          axios.post('/api/task/' + task_id + '/reschedule_task', {
-            calender_id: target_id
-          })
-          .then(resp => {
-            reRenderPage()
-            fetchTask()
-          })
-          .catch(resp => console.log(resp))
-        }
-      }
-
-      // (3) drop the ball, remove unneeded handlers
-      function onmouseup(e) {
-        let pageY = e.pageY
-        let pageX = e.pageX
-        document.removeEventListener('mousemove', onMouseMove);
-        setTaskCalender(e.target.id)
-        setStyle({position: 'relative'});
-        document.removeEventListener('mouseup', onmouseup);
-      };
-
-      // move our absolutely positioned ball under the pointer
-      moveAt(e.pageX, e.pageY);
-
-      // (2) move the ball on mousemove
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onmouseup);
-
-      ondragstart = function() {
-      return false;
-      };
-    }; 
-
-    return(
-      <div id={id} className='scheduled-task' style={style}>
-        {time != null &&
-          <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
-        {time == null && 
-          <input type='text' id={id} className='task__time' onBlur={updateTime} defaultValue="add time"></input>}
-        {tag != null &&
-          <p style={{position: "absolute", width: "15%", left: "15%"}}>{`${tag}- `}</p>}
-        {tag != null &&
-          <input style={{width: "70%", left: "30%"}} type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        {(tag == null) &&  
-          <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
-        <textarea id={id} className='task__description' onBlur={updateDescription} defaultValue={description}></textarea>
-        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
-      </div>
-    )
-  }
+  return(
+    <div id={id} className='scheduled-task' style={style}>
+      {time != null &&
+        <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
+      {time == null && 
+        <input type='text' id={id} className='task__time' onBlur={updateTime} defaultValue="add time"></input>}
+      {tag != null &&
+        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={`${tag}-${name}`}></input>}
+      {(tag == null) &&  
+        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+      <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+      <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+      <textarea id={id} className={`task__description ${task_id}`} onBlur={updateDescription} defaultValue={description}></textarea>
+    </div>
+  )
+}
 
   export { ScheduledTask }

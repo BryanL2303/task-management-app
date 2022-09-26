@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AccountStateContext } from './context/AccountStateContext'
 import { HomePageStateContext } from './context/HomePageStateContext'
+import {image} from './sidebar-icon.jpg'
 
 const TopBar = () => {
   const [accountState, setAccountState] = useContext(AccountStateContext)
@@ -12,6 +13,11 @@ const TopBar = () => {
       setAccountName(accountState.name)
     }
   }, [accountState])
+
+  useEffect(() => {
+    let userMenu = document.getElementsByClassName('user-menu')[0]
+    userMenu.style['visibility'] = 'hidden'
+  }, [accountName])
 
   function toggleSideBar(e) {
     let sideBar = document.getElementsByClassName('sidebar-container')[0]
@@ -65,19 +71,33 @@ const TopBar = () => {
   const UserMenu = () => {
     return(
       <div className='user-menu'>
-        {screen.width > 500 &&
-          <button className="tutorial--button" onClick={showTutorial}> ? </button>}
-        <h1>{accountName}</h1>
         <button className="log-out--button" onClick={logOut}>Log Out</button>
       </div>
     )
   }
 
+  function showUserMenu(e) {
+    let userMenu = document.getElementsByClassName('user-menu')[0]
+    if (userMenu.style['visibility'] == 'hidden') {
+      userMenu.style['visibility'] = 'visible'
+    }
+    else {
+      userMenu.style['visibility'] = 'hidden'
+    }
+  }
+
   return(
     <nav id='topbar-container' className='topbar-container'>
-      <button onClick={toggleSideBar}>Sidebar</button>
+      <button className='sidebar--button' onClick={toggleSideBar}><img src="/packs/media/packs/pages/homepage/sidebar-icon-d04f396ba76b9667ee34744d3127b961.jpg"/></button>
       {homePageState=='project' && screen.width > 500 && <button onClick={toggleProjectTaskList}>Task List</button>}
+      
+      <div className='user-component'>
+      {screen.width > 500 &&
+          <button className="tutorial--button" onClick={showTutorial}> ? </button>}
+      <h1 className='account-name__label'>{accountName}</h1>
+      <button className='show-menu--button' onClick={showUserMenu}><img src="/packs/media/packs/pages/homepage/user-menu-icon-bc529dc1442054ce8a7db5ccc2846bb7.jpg"/></button>
       <UserMenu/>
+      </div>
     </nav>
   )
 }

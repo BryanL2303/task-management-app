@@ -1,14 +1,7 @@
-@media screen and (min-width: 500px){
+@media screen and (min-width: 950px){
 	.tutorial-page {
 		height: 100vh;
 		width: 100vw;
-	}
-
-	.tutorial-page img{
-		height: 95%;
-		position: absolute;
-		top: 5%;
-		overflow: scroll;
 	}
 
 	.tutorial-page .topbar-container{
@@ -22,5 +15,12 @@
 		height: 100%;
 		width: 33%;
 		text-align: center;
+	}
+
+	.tutorial-page img{
+		height: 95%;
+		position: absolute;
+		top: 5%;
+		overflow: scroll;
 	}
 }

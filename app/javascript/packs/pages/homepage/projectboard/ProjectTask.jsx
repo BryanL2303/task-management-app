@@ -18,6 +18,12 @@ const ProjectTask = ({ task_id, view, reRenderList }) => {
     }
   }, [])
 
+  useEffect(() => {
+    let descriptionBox = document.getElementsByClassName(`task__description ${task_id}`)[0]
+    descriptionBox.style['height'] = '0px'
+    descriptionBox.style['height'] = `${descriptionBox.scrollHeight}px`
+  }, [description])
+
   function fetchTask() {
     axios.get('/api/task/' + task_id)
     .then( resp => {
@@ -96,8 +102,8 @@ const ProjectTask = ({ task_id, view, reRenderList }) => {
     <div className='project-task'>
       <input type='text' className='task__name' onBlur={changeName} defaultValue={name}></input>
       <input type='text' className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
-      <textarea className='task__description' onBlur={changeDescription} defaultValue={description}></textarea>
       <button className='task__delete--button' onClick={deleteTask}>X</button>
+      <textarea className={`task__description ${task_id}`} onBlur={changeDescription} defaultValue={description}></textarea>
     </div>
   )
 }

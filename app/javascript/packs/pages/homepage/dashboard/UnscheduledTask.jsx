@@ -21,6 +21,12 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
     }
   }, [])
 
+  useEffect(() => {
+    let descriptionBox = document.getElementsByClassName(`task__description ${task_id}`)[0]
+    descriptionBox.style['height'] = '0px'
+    descriptionBox.style['height'] = `${descriptionBox.scrollHeight}px`
+  }, [description])
+
   function fetchTask() {
     axios.get('/api/task/' + task_id)
     .then( resp => {
@@ -118,10 +124,6 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   function moveFunction(e) {
       // (1) prepare to moving: make absolute and on top by z-index
       setStyle({position: 'absolute', zIndex:1000, top:0, left:0});      
-      
-      // move it out of any current parents directly into body
-      // to make it positioned relative to the body
-      document.body.append(this);
 
       // centers the ball at (pageX, pageY) coordinates
       function moveAt(pageX, pageY) {
@@ -169,21 +171,19 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
       ondragstart = function() {
       return false;
       };
-    };
+  };
 
-    return(
-      <div id={id} className="unscheduled-task" style={style}>
-        {tag != null &&
-          <p style={{width: "15%"}}>{`${tag}- `}</p>}
-        {tag != null &&
-          <input style={{width: "85%", left: "15%"}} type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        {(tag == null) &&  
-          <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
-        <textarea id={id} className='task__description' defaultValue={description} onBlur={updateDescription}></textarea>
-        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
-      </div>
-    )
-  }
+  return(
+    <div id={id} className="unscheduled-task" style={style}>
+      {tag != null &&
+        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={`${tag}-${name}`}></input>}
+      {(tag == null) &&  
+        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
+      <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+      <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+      <textarea id={id} className={`task__description ${task_id}`} defaultValue={description} onBlur={updateDescription}></textarea>
+    </div>
+  )
+}
 
   export { UnscheduledTask }
