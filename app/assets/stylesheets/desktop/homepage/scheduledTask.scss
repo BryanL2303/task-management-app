@@ -14,8 +14,12 @@
 		background-color: inherit;
 	}
 
-	.scheduled-task .task__name{
-		width: 65%;
+	.scheduled-task .task__label{
+		width: 100%;
+	}
+
+	.unscheduled-task .task__name{
+		max-width: 65%;
 	}
 
 	.scheduled-task .task__priority{
@@ -23,14 +27,14 @@
 		text-align: center;
 	}
 
-	.scheduled-task textarea{
-		width: 90%;
-		background-color: inherit;
-	}
-
 	.scheduled-task .task__delete--button{
 		height: auto;
 		width: 8%;
 		border-radius: 5px;
+	}
+
+	.scheduled-task textarea{
+		width: 90%;
+		background-color: inherit;
 	}
 }

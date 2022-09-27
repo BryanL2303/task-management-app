@@ -11,6 +11,8 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
   const [projects, setProjects] = useContext(ProjectListContext)
   
 	useEffect(()=> {
+		let projectSettings = document.getElementsByClassName('project__settings')[0]
+    projectSettings.style['visibility'] = 'hidden'
 		setDescription(project.attributes.project_description)
 		document.getElementsByClassName('project__description')[0].value = project.attributes.project_description
 		document.getElementsByClassName('project__tag')[0].value = project.attributes.tag
@@ -72,13 +74,40 @@ const Projectboard = ({project, showDashboard, reRenderProject}) => {
     }
   }
 
+  function showProjectSettings(e) {
+    let projectSettings = document.getElementsByClassName('project__settings')[0]
+    if (projectSettings.style['visibility'] == 'hidden') {
+      projectSettings.style['visibility'] = 'visible'
+    }
+    else {
+      projectSettings.style['visibility'] = 'hidden'
+    }
+  }
+
+  function toggleProjectTaskList() {
+    let projectDescription = document.getElementsByClassName('project__description')[0]
+    let projectTaskList = document.getElementsByClassName('project__task-container')[0]
+    if (projectTaskList.style['visibility'] != 'hidden') {
+      projectDescription.style['width'] = '100%'
+      projectTaskList.style['visibility'] = 'hidden'
+    }
+    else {
+      projectDescription.style['width'] = '50%'
+      projectTaskList.style['visibility'] = 'visible'
+    }
+  }
+
 	return(
 		<div className="project__container">
 			<div className="project__header">
 				<h1>{project.attributes.project_name}</h1>
 				<label>Tag (This will prefix all task names): </label>
 				<input type='text' className='project__tag' onBlur={updateTag} defaultValue={ project.attributes.tag }></input>
-				<button className="project__delete--button" onClick={ deleteProject }>Delete Project</button>
+				<button className='project__show-settings--button' onClick={showProjectSettings}><img src="/packs/media/packs/pages/homepage/projectboard/project-settings-icon-888be188c27c65a4af51589ffef5291d.jpg"/></button>
+				<div className='project__settings'>
+					<button onClick={toggleProjectTaskList}>Task List</button>
+					<button className="project__delete--button" onClick={ deleteProject }>Delete Project</button>
+				</div>
 			</div>
 
 			<textarea className="project__description" onBlur={ saveDescription } defaultValue={ description }></textarea>

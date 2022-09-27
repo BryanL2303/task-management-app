@@ -9,8 +9,12 @@
 		height: 25px;
 	}
 
+	.unscheduled-task .task__label{
+		width: 100%;
+	}
+
 	.unscheduled-task .task__name{
-		width: 80%;
+		max-width: 80%;
 	}
 
 	.unscheduled-task .task__priority{

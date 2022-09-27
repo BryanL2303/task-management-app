@@ -46,19 +46,6 @@ const TopBar = () => {
     }
   }
 
-  function toggleProjectTaskList() {
-    let projectDescription = document.getElementsByClassName('project__description')[0]
-    let projectTaskList = document.getElementsByClassName('project__task-container')[0]
-    if (projectTaskList.style['visibility'] != 'hidden') {
-      projectDescription.style['width'] = '100%'
-      projectTaskList.style['visibility'] = 'hidden'
-    }
-    else {
-      projectDescription.style['width'] = '50%'
-      projectTaskList.style['visibility'] = 'visible'
-    }
-  }
-
   function showTutorial (e) {
     window.location.href = '/tutorial'
   }
@@ -89,7 +76,6 @@ const TopBar = () => {
   return(
     <nav id='topbar-container' className='topbar-container'>
       <button className='sidebar--button' onClick={toggleSideBar}><img src="/packs/media/packs/pages/homepage/sidebar-icon-d04f396ba76b9667ee34744d3127b961.jpg"/></button>
-      {homePageState=='project' && screen.width > 500 && <button onClick={toggleProjectTaskList}>Task List</button>}
       
       <div className='user-component'>
       {screen.width > 500 &&

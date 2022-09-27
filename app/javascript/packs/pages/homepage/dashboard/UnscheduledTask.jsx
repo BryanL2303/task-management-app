@@ -174,13 +174,14 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   };
 
   return(
-    <div id={id} className="unscheduled-task" style={style}>
-      {tag != null &&
-        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={`${tag}-${name}`}></input>}
-      {(tag == null) &&  
-        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-      <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
-      <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+    <div id={id} className="unscheduled-task" style={style} onMouseDown={moveFunction}>
+      <div className='task__label'>
+        {tag != null &&
+          <label id={id} className='task__tag'>{tag}-</label>}
+        <input type='text' id={id} className='task__name' onBlur={updateName} defaultValue={name}></input>
+        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+      </div>
       <textarea id={id} className={`task__description ${task_id}`} defaultValue={description} onBlur={updateDescription}></textarea>
     </div>
   )

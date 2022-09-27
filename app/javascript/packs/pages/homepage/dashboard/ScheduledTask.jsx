@@ -216,17 +216,18 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   }
 
   return(
-    <div id={id} className='scheduled-task' style={style}>
-      {time != null &&
-        <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
-      {time == null && 
-        <input type='text' id={id} className='task__time' onBlur={updateTime} defaultValue="add time"></input>}
-      {tag != null &&
-        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={`${tag}-${name}`}></input>}
-      {(tag == null) &&  
-        <input type='text' id={id} className='task__name' onMouseDown={moveFunction} onBlur={updateName} defaultValue={name}></input>}
-      <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
-      <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+    <div id={id} className='scheduled-task' style={style} onMouseDown={moveFunction}>
+      <div className='task__label'>
+        {time != null &&
+          <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
+        {time == null && 
+          <input type='text' id={id} className='task__time' onBlur={updateTime} defaultValue="add time"></input>}
+        {tag != null &&
+          <label id={id} className='task__tag'>{tag}-</label>}
+        <input type='text' id={id} className='task__name' onBlur={updateName} defaultValue={name}></input>
+        <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
+        <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
+      </div>
       <textarea id={id} className={`task__description ${task_id}`} onBlur={updateDescription} defaultValue={description}></textarea>
     </div>
   )

@@ -12,9 +12,30 @@
 		border-bottom: solid;
 	}
 
-	.project__delete--button{
+	.project__container .project__header .project__show-settings--button{
 		position: absolute;
-		right: 10px;
+		top: 0%;
+		right: 0px;
+		border: none;
+		width: 7.5%;
+		background: inherit;
+	}
+
+	.project__container .project__header .project__show-settings--button img{
+		width: 100%;
+	}
+
+	.project__container .project__header .project__settings{
+		visibility: hidden;
+		position:absolute;
+		top: 10%;
+		right: 0%;
+		z-index: 1000;
+		width: 10%;
+	}
+
+	.project__container .project__header .project__settings button{
+		width: 100%;
 	}
 
 	.project__container .project__description{
