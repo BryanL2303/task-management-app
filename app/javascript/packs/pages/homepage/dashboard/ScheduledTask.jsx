@@ -79,8 +79,8 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     function moveAt(pageX, pageY) {
       let offSetY = document.getElementsByClassName("dashboard-container")[0].offsetTop
       let offSetX = document.getElementsByClassName("dashboard-container")[0].offsetLeft
-      setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY - 25 + 'px'),
-        left: (pageX - offSetX - 25 + 'px') });
+      setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY + 20 + 'px'),
+        left: (pageX - offSetX + 20 + 'px') });
     }
 
     function onMouseMove(e) {
@@ -216,8 +216,9 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   }
 
   return(
-    <div id={id} className='scheduled-task' style={style} onMouseDown={moveFunction}>
+    <div id={id} className='scheduled-task' style={style}>
       <div className='task__label'>
+        <img src='/packs/media/packs/pages/homepage/task-dragging-icon-400fd3434b093156826257c2d2ad4a2c.jpg' className='task__move--img' onMouseDown={moveFunction}/>
         {time != null &&
           <input type='text' id={id} className='task__time' onBlur={updateTime} onChange={updateTimeDisplay} value={displayTime}></input>}
         {time == null && 

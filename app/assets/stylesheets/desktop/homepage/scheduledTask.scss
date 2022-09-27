@@ -2,6 +2,7 @@
 	.scheduled-task{
 		position: relative;
 		border-top: solid;
+		width: 100%;
 	}
 
 	.scheduled-task input{
@@ -18,23 +19,32 @@
 		width: 100%;
 	}
 
-	.unscheduled-task .task__name{
+	.scheduled-task .task__label .task__move--img{
+		width: 3%;
+	}
+
+	.scheduled-task .task__name{
 		max-width: 65%;
+		min-width: 50%;
 	}
 
 	.scheduled-task .task__priority{
 		width: 10%;
 		text-align: center;
+		position: absolute;
+		right: 8%;
 	}
 
 	.scheduled-task .task__delete--button{
 		height: auto;
 		width: 8%;
 		border-radius: 5px;
+		position: absolute;
+		right: 0%;
 	}
 
 	.scheduled-task textarea{
-		width: 90%;
+		width: 100%;
 		background-color: inherit;
 	}
 }

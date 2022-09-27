@@ -130,8 +130,8 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
         let offSetY = document.getElementsByClassName("dashboard-container")[0].offsetTop
         let offSetX = document.getElementsByClassName("dashboard-container")[0].offsetLeft
         offSetX = offSetX + document.getElementsByClassName("othertasks-container")[0].offsetLeft
-        setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY - 25 + 'px'),
-         left: (pageX - offSetX - 25 + 'px') });
+        setStyle({ position: 'absolute', zIndex:1000, top: (pageY - offSetY + 20 + 'px'),
+         left: (pageX - offSetX + 20 + 'px') });
       }
 
       function onMouseMove(e) {
@@ -176,6 +176,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   return(
     <div id={id} className="unscheduled-task" style={style} onMouseDown={moveFunction}>
       <div className='task__label'>
+        <img src='/packs/media/packs/pages/homepage/task-dragging-icon-400fd3434b093156826257c2d2ad4a2c.jpg' className='task__move--img' onMouseDown={moveFunction}/>
         {tag != null &&
           <label id={id} className='task__tag'>{tag}-</label>}
         <input type='text' id={id} className='task__name' onBlur={updateName} defaultValue={name}></input>
