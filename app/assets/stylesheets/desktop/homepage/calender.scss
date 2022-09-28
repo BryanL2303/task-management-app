@@ -1,0 +1,62 @@
+@media screen and (min-width: 950px){
+	.calender__container{
+		height: 95%;
+		width: 75%;
+		position: relative;
+		margin-left: 25%;
+		padding-left: 5px;
+		overflow: hidden;
+	}
+
+	.calender__header{
+		margin-left: 5%;
+		margin-top: 2%;
+		width: 90%;
+		height: 6%;
+		border: solid;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.calender__header .prev-month--button{
+		margin-left: 35%;
+	}
+
+	.calender__header button{
+		width: 10%;
+	}
+
+	.calender__header label{
+		width: 10%;
+		text-align: center;
+	}
+
+	.calender__header ul{
+		height: 50%;
+		display: flex;
+	}
+
+	.calender__header li{
+		border: solid;
+		width: 14%;
+		height: 100%;
+	}
+
+	.calender__dates-container{
+		margin-left: 5%;
+		width: 90%;
+		height: 85%;
+		border: solid;
+	}
+
+	.calender__dates-container ul{
+		height: 20%;
+		display: flex;
+	}
+
+	.calender__dates-container li{
+		border: solid;
+		width: 14%;
+		height: 100%;
+	}
+}

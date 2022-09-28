@@ -174,7 +174,7 @@ const UnscheduledTask = ({ task_id, view, reRenderPage, reRenderList }) => {
   };
 
   return(
-    <div id={id} className="unscheduled-task" style={style} onMouseDown={moveFunction}>
+    <div id={id} className="unscheduled-task" style={style}>
       <div className='task__label'>
         <img src='/packs/media/packs/pages/homepage/task-dragging-icon-400fd3434b093156826257c2d2ad4a2c.jpg' className='task__move--img' onMouseDown={moveFunction}/>
         {tag != null &&

@@ -4,6 +4,7 @@ import { TopBar } from './homepage/TopBar'
 import { SideBar } from './homepage/SideBar'
 import { Dashboard } from './homepage/Dashboard'
 import { Projectboard } from './homepage/Projectboard'
+import { Calender } from './homepage/Calender'
 import { AccountStateContext } from './homepage/context/AccountStateContext'
 import { HomePageStateContext } from './homepage/context/HomePageStateContext'
 import { CurrentDisplayProjectContext } from './homepage/context/CurrentDisplayProjectContext'
@@ -66,6 +67,7 @@ const HomePage = () => {
         {homePageState=="tutorial" && <Tutorial/>}
         {homePageState=="dashboard" && <Dashboard/>}
         {homePageState=="project" && <Projectboard project={ currentDisplayProjectState } showDashboard={ showDashboard } reRenderProject={ fetchProject }/>}
+        {homePageState=="calender" && <Calender/>}
       </UnscheduledTasksProvider>
       </DashboardStateProvider>
       </ProjectListProvider>

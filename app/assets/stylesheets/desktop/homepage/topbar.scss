@@ -7,13 +7,13 @@
 		background-color: inherit;
 	}
 
-	.topbar-container .sidebar--button{
+	.topbar-container button{
 		height: 100%;
 		border: none;
 		background-color: inherit;
 	}
 
-	.topbar-container .sidebar--button img{
+	.topbar-container button img{
 		height: 100%;
 	}
 
@@ -30,6 +30,7 @@
 		position: relative;
 		height: 30px;
 		width: 30px;
+		border: solid;
 		border-radius: 15px;
 		font-size: 20px;
 	}

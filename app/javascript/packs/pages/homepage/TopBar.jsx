@@ -46,6 +46,11 @@ const TopBar = () => {
     }
   }
 
+  function showCalender(e) {
+    setHomePageState('calender')
+    sessionStorage.setItem('homePageState', 'calender')
+  }
+
   function showTutorial (e) {
     window.location.href = '/tutorial'
   }
@@ -76,6 +81,7 @@ const TopBar = () => {
   return(
     <nav id='topbar-container' className='topbar-container'>
       <button className='sidebar--button' onClick={toggleSideBar}><img src="/packs/media/packs/pages/homepage/sidebar-icon-d04f396ba76b9667ee34744d3127b961.jpg"/></button>
+      <button className='show-calender--button' onClick={showCalender}><img src="/packs/media/packs/pages/homepage/calender-icon-f42e69b4071f9476f2d436c3045374f2.jpg"/></button>
       
       <div className='user-component'>
       {screen.width > 500 &&
