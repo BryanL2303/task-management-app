@@ -31,7 +31,7 @@ module Api
 				  calender_id: params[:task][:calender_id],
 				  task_priority: params[:task][:task_priority],
 				  account_id: params[:task][:account_id],
-				  tag: params[:task][:tag])
+				  tag: params[:task][:tag], on_calender: params[:task][:on_calender])
 
 			if task.save!
 				render json: TaskSerializer.new(task).serialized_json
@@ -83,7 +83,7 @@ module Api
 
 		private
 		def task_param
-			params.require(:task).permit(:id, :task_name, :completed, :scheduled, :task_description, :time, :calender_id, :project_id, :task_priority)
+			params.require(:task).permit(:id, :task_name, :completed, :scheduled, :task_description, :time, :calender_id, :project_id, :task_priority, :on_calender)
 		end
 	end
 end

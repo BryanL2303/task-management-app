@@ -10,12 +10,15 @@ Rails.application.routes.draw do
         get '/get_tasks_by_project/:project_id' => 'account#getTasksByProject'
         post '/create_account' => 'account#createAccount'
         post '/authenticate_account' => 'account#authenticateAccount'
+        post '/get_tasks_on_calender' => 'account#getTasksOnCalender'
       end
     end
 
     resources :calender, param: :date do
       member do
-        post '/set_week_dates' => 'calender#setWeekDates'
+        get '/set_week_dates' => 'calender#setWeekDates'
+        get '/append_next_year' => 'calender#appendNextYear'
+        post '/get_month_dates' => 'calender#getMonthDates'
       end
     end
 

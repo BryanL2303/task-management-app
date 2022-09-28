@@ -34,25 +34,7 @@ const Dashboard = () => {
   }, [])
 
   function fetchCalender() {
-    let date = new Date();
-    let findDates = {
-      date0: "lol",
-      date1: "lol",
-      date2: "lol",
-      date3: "lol",
-      date4: "lol",
-      date5: "lol",
-      date6: "lol",
-      date7: "lol"
-    }
-    let i = 0
-    for (i=0; i<8; i++) {
-      let today = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate()
-      findDates["date" + i] = today
-      date.setDate(date.getDate() + 1)
-    }
-
-    axios.post('/api/calender/2000-01-01/set_week_dates', findDates)
+    axios.get('/api/calender/2000-01-01/set_week_dates')
     .then( resp => {
       setDashboardState(resp.data.data)
       sessionStorage.setItem("dashboardState", JSON.stringify(resp.data.data))

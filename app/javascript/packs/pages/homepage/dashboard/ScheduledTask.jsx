@@ -8,6 +8,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
   const [time, setTime] = useState()
   const [priority, setPriority] = useState()
   const [description, setDescription] = useState()
+  const [onCalender, setOnCalender] = useState()
   //Time display is required since there is a conversion from
   //Ruby time object to time string
   const [displayTime, setDisplayTime] = useState("loading")
@@ -24,6 +25,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
       setPriority(task.task_priority)
       setDescription(task.task_description)
       setTag(task.tag)
+      setOnCalender(task.on_calender)
     }
   }, [])
 
@@ -56,6 +58,7 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
         setPriority(resp.data.data.attributes.task_priority)
         setDescription(resp.data.data.attributes.task_description)
         setTag(resp.data.data.attributes.tag)
+        setOnCalender(resp.data.data.attributes.on_calender)
         sessionStorage.setItem(`task${task_id}`, JSON.stringify(resp.data.data.attributes))
       }
     })
@@ -215,6 +218,16 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
     .catch(resp => console.log(resp))
   }
 
+  function toggleCalender(e) {
+    axios.post('/api/task/' + task_id + '/update_task', {
+      on_calender: e.target.checked
+    })
+    .then(resp => {
+      fetchTask()
+    })
+    .catch(resp => console.log(resp))
+  }
+
   return(
     <div id={id} className='scheduled-task' style={style}>
       <div className='task__label'>
@@ -226,6 +239,11 @@ const ScheduledTask = ({ task_id, view, reRenderPage, reRenderDate }) => {
         {tag != null &&
           <label id={id} className='task__tag'>{tag}-</label>}
         <input type='text' id={id} className='task__name' onBlur={updateName} defaultValue={name}></input>
+        {(onCalender == false || onCalender == null) &&
+          <input type='checkbox' id={id} name="calender" className='task__on-calender' onClick={toggleCalender}></input>}
+        {onCalender == true &&
+          <input type='checkbox' defaultChecked id={id} name="calender" className='task__on-calender' onClick={toggleCalender}></input>}
+        <label htmlFor='calender' className='task__on-calender--label'><img src="/packs/media/packs/pages/homepage/calender-icon-f42e69b4071f9476f2d436c3045374f2.jpg"/></label>
         <input type='text' id={id} className='task__priority' onBlur={updatePriority} defaultValue={priority}></input>
         <button id={id} className='task__delete--button' onClick={deleteTask}>X</button>
       </div>

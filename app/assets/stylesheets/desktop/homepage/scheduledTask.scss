@@ -24,8 +24,24 @@
 	}
 
 	.scheduled-task .task__name{
-		max-width: 65%;
-		min-width: 50%;
+		max-width: 55%;
+		min-width: 40%;
+	}
+
+	.scheduled-task .task__on-calender{
+		width: 5%;
+		position: absolute;
+		right: 23%;
+	}
+
+	.scheduled-task .task__on-calender--label{
+		width: 5%;
+		position: absolute;
+		right: 18%;
+	}
+
+	.scheduled-task .task__on-calender--label img{
+		width: 100%;
 	}
 
 	.scheduled-task .task__priority{

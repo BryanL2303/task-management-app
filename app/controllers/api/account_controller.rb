@@ -76,5 +76,19 @@ module Api
 
 			render json: TaskSerializer.new(tasks).serialized_json
 		end
+
+		def getTasksOnCalender
+			dates = Calender.where(year: params[:year], mon: params[:mon]).order("date")
+			dictionary = {}
+			mcount = 0
+			while mcount < dates.length
+				tasks = Task.where("account_id = ? AND calender_id = ? AND on_calender = ?", params[:id],
+			 	dates[mcount].id, true).order("task_priority")
+				dictionary[dates[mcount].id] = tasks
+				mcount += 1
+			end
+
+			render json: {data: dictionary}
+		end
 	end
 end

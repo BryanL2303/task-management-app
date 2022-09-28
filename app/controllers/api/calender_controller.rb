@@ -41,8 +41,10 @@ module Api
 		end
 
 		def setWeekDates
-			dates = Calender.where(date: [params[:date0]...params[:date7]]).order("date")
-			past_dates = Calender.where(date: ["2000-01-01"...params[:date0]])
+			today = Date.today
+			nextweek = today + 7
+			dates = Calender.where(date: [today.strftime("%Y-%m-%d")...nextweek.strftime("%Y-%m-%d")]).order("date")
+			past_dates = Calender.where(date: ["2000-01-01"...today.strftime("%Y-%m-%d")])
 			if past_dates.length != 0
 				for date in past_dates
 					tasks = Task.where(calender_id: date.id)
@@ -56,45 +58,93 @@ module Api
 				end
 			end
 			if dates.length != 7
-				date = Calender.find_by(date: params[:date0])
-				if date == nil 
-					date = Calender.new(date: params[:date0])
-					date.save
+				count = 0
+				date = today
+				while count < 7
+					tempDate = Calender.find_by(date: date.strftime("%Y-%m-%d"))
+					if tempDate == nil 
+						tempDate = Calender.new(date: date, year: date.year, mon: date.mon, mday: date.mday, wday: date.wday, string: date.strftime("%A"))
+						tempDate.save
+					end
+					count += 1
+					date += 1
 				end
-				date = Calender.find_by(date: params[:date1])
-				if date == nil 
-					date = Calender.new(date: params[:date1])
-					date.save
-				end
-				date = Calender.find_by(date: params[:date2])
-				if date == nil 
-					date = Calender.new(date: params[:date2])
-					date.save
-				end
-				date = Calender.find_by(date: params[:date3])
-				if date == nil 
-					date = Calender.new(date: params[:date3])
-					date.save
-				end
-				date = Calender.find_by(date: params[:date4])
-				if date == nil 
-					date = Calender.new(date: params[:date4])
-					date.save
-				end
-				date = Calender.find_by(date: params[:date5])
-				if date == nil 
-					date = Calender.new(date: params[:date5])
-					date.save
-				end
-				date = Calender.find_by(date: params[:date6])
-				if date == nil 
-					date = Calender.new(date: params[:date6])
-					date.save
-				end
-				dates = Calender.where(date: [params[:date0]...params[:date7]]).order("date")
+				dates = Calender.where(date: [today.strftime("%Y-%m-%d")...nextweek.strftime("%Y-%m-%d")]).order("date")
 			end
 
 			render json: CalenderSerializer.new(dates, options).serialized_json
+		end
+
+		def appendNextYear
+			date = Date.today
+			target = Date.new(date.year+1, date.mon, date.mday)
+			while date < target
+				tempDate = Calender.find_by(date: date)
+				if tempDate == nil
+					tempDate = Calender.new(date: date, year: date.year, mon: date.mon, mday: date.mday, wday: date.wday, string: date.strftime("%A"))
+					tempDate.save
+				end
+				date += 1
+			end
+			render json: {data: true}
+		end
+
+		def getMonthDates
+			dates = Calender.where(year: params[:year], mon: params[:mon]).order("date")
+			marray = Array.new(5)
+			marraycount = 0
+			mcount = 0
+			warray = Array.new(7)
+			if dates[0] != nil
+				wcount = dates[0].wday
+				if ((7 - wcount) + 28) < dates.length
+					temp = 28 + (7-wcount)
+					tempCount = 0
+					while temp < dates.length
+						warray[tempCount] = dates[temp]
+						temp += 1
+						tempCount += 1
+					end
+					while wcount < 7
+						warray[wcount] = dates[mcount]
+						mcount += 1
+						wcount += 1
+					end
+					marray[marraycount] = warray
+					marraycount += 1
+					wcount = 0
+					warray = Array.new(7)
+				end
+				while mcount < dates.length
+					while wcount < 7
+						warray[wcount] = dates[mcount]
+						mcount += 1
+						wcount += 1
+					end
+					if wcount == 7 && marraycount != 5
+						marray[marraycount] = warray
+						marraycount += 1
+						wcount = 0
+						warray = Array.new(7)
+					end
+				end
+			else
+				wcount = 0
+				while mcount < 35
+					while wcount < 7
+						warray[wcount] = nil
+						mcount += 1
+						wcount += 1
+					end
+					if wcount == 7
+						marray[marraycount] = warray
+						marraycount += 1
+						wcount = 0
+						warray = Array.new(7)
+					end
+				end
+			end
+			render json: {data: marray}
 		end
 
 		private

@@ -34,6 +34,7 @@
 	.calender__header ul{
 		height: 50%;
 		display: flex;
+		list-style-type: none;
 	}
 
 	.calender__header li{
@@ -52,11 +53,45 @@
 	.calender__dates-container ul{
 		height: 20%;
 		display: flex;
+		list-style-type: none;
 	}
 
 	.calender__dates-container li{
 		border: solid;
 		width: 14%;
 		height: 100%;
+	}
+
+	.calender__dates-container li .delete-task--button{
+		height: 100%;
+	}
+
+	.calender__dates-container li .form{
+		position: relative;
+	}
+
+	.calender__dates-container .form .form__time{
+		height: 20px;
+		width: 25%;
+	}
+
+	.calender__dates-container .form .form__name{
+		height: 20px;
+		width: 70%;
+	}
+
+	.calender__dates-container .form .form__project{
+		height: 20px;
+		width: 100%;
+	}
+
+	.calender__dates-container .form .form__description{
+		height: 50px;
+		width: 100%;
+	}
+
+	.calender__dates-container .null{
+		pointer-events: none;
+		background-color: grey;
 	}
 }
