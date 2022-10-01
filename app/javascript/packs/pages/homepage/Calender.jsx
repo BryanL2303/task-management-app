@@ -23,7 +23,9 @@ const Calender = () => {
   }, [month])
 
   useEffect(() => {
-    getMonthDates(month, year)
+    if (tasks != null) {
+      getMonthDates(month, year)      
+    }
   }, [tasks])
 
   function reRenderCalender() {
