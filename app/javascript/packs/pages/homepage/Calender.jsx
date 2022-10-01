@@ -20,8 +20,11 @@ const Calender = () => {
 
   useEffect(() => {
     getTasksOnCalender(month, year)
-    getMonthDates(month, year)
   }, [month])
+
+  useEffect(() => {
+    getMonthDates(month, year)
+  }, [tasks])
 
   function reRenderCalender() {
     getTasksOnCalender(month, year)
