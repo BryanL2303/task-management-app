@@ -132,9 +132,10 @@ module Api
 					warray[wcount] = nil
 					wcount += 1
 				end
+				marray[marraycount] = warray
 				marraycount += 1
 				while marraycount < 5
-					marray[marraycount] = [nil, nil, nil, nil, nil, nil, nil]
+					marray[marraycount] = Array.new(7)
 					marraycount += 1
 				end
 			else
