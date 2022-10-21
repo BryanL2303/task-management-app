@@ -128,6 +128,10 @@ module Api
 						warray = Array.new(7)
 					end
 				end
+				while mcount != 5
+					marray[marraycount] = [nil, nil, nil, nil, nil, nil, nil]
+					marraycount += 1
+				end
 			else
 				wcount = 0
 				while mcount < 35
