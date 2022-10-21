@@ -133,7 +133,7 @@ module Api
 					wcount += 1
 				end
 				marraycount += 1
-				while marraycount != 5
+				while marraycount < 5
 					marray[marraycount] = [nil, nil, nil, nil, nil, nil, nil]
 					marraycount += 1
 				end
