@@ -41,7 +41,7 @@
 
 	.project__container .project__description{
 		height: 90%;
-		width: 50%;
+		width: 49%;
 		position: absolute;
 		top: 10%;
 		background-color: inherit;
@@ -55,7 +55,7 @@
 		height: 90%;
 		width: 50%;
 		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: auto;
 		position: absolute;
 		top: 10%;
 		left: 50%;

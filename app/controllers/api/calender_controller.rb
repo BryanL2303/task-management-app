@@ -95,8 +95,11 @@ module Api
 			marraycount = 0
 			mcount = 0
 			warray = Array.new(7)
+			#Ensure that the month selected is not empty.
+			#Months that have passed are all nil.
 			if dates[0] != nil
 				wcount = dates[0].wday
+				#Check if we need to merge the final week of the month with the first week
 				if ((7 - wcount) + 28) < dates.length
 					temp = 28 + (7-wcount)
 					tempCount = 0
@@ -132,12 +135,15 @@ module Api
 					warray[wcount] = nil
 					wcount += 1
 				end
-				marray[marraycount] = warray
-				marraycount += 1
+				if marraycount != 5
+					marray[marraycount] = warray
+					marraycount += 1
+				end
 				while marraycount < 5
 					marray[marraycount] = Array.new(7)
 					marraycount += 1
 				end
+			#The rest of this code is to fill up nils for an empty month
 			else
 				wcount = 0
 				while mcount < 35
