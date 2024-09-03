@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "rails webpacker:compile",
+    "start": "rails server"
   },
   "repository": {
     "type": "git",
