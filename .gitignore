@@ -29,8 +29,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/public
 /public/packs-test
 /public/packs
+/public/assets
 /node_modules
 /yarn-error.log
 yarn-debug.log*
