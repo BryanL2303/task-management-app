@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/BryanL2303/task-management-app#readme",
   "dependencies": {
-    "@babel/core": "7.0.0",
+    "@babel/core": "^7.25.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.18.9",
     "@babel/plugin-proposal-private-methods": "^7.18.6",
