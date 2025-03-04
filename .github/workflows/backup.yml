@@ -1,0 +1,50 @@
+name: Nightly Database Backup
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every midnight UTC
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku auth:token
+
+      - name: Capture Database Backup
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku pg:backups:capture --app scheduler-site
+
+      - name: Download Backup
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          mkdir -p backups
+          heroku pg:backups:download --app scheduler-site -o backups/backup_$(date +%Y-%m-%d_%H-%M-%S).dump
+
+      - name: Verify backup download
+        run: ls -l backups/
+
+      - name: Commit backups if changes exist
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git add backups/
+            git commit -m "Add nightly backup: $(date +%Y-%m-%d)"
+            git push origin
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
